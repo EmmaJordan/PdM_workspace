@@ -1,10 +1,10 @@
-15:53:12 **** Incremental Build of configuration Debug for project Ej0_blinky_Emma ****
+21:19:55 **** Incremental Build of configuration Debug for project Ej0_blinky_Emma ****
 make -j4 all 
 arm-none-eabi-size   Ej0_blinky_Emma.elf 
    text	   data	    bss	    dec	    hex	filename
-   6308	     32	   1568	   7908	   1ee4	Ej0_blinky_Emma.elf
+   6560	     32	   1568	   8160	   1fe0	Ej0_blinky_Emma.elf
 Finished building: default.size.stdout
  
 
-15:53:13 Build Finished. 0 errors, 0 warnings. (took 944ms)
+21:19:56 Build Finished. 0 errors, 0 warnings. (took 944ms)
 

@@ -50,7 +50,7 @@ static void Error_Handler(void);
   */
 int main(void)
 {
-  /* STM32F4xx HAL library initialization:
+   /* STM32F4xx HAL library initialization:
        - Configure the Flash prefetch
        - Systick timer is configured by default as source of time base, but user 
          can eventually implement his proper time base source (a general purpose 
@@ -60,22 +60,41 @@ int main(void)
        - Set NVIC Group Priority to 4
        - Low Level Initialization
      */
-  HAL_Init();
+    HAL_Init();
 
-  /* Configure the system clock to 180 MHz */
-  SystemClock_Config();
+    /* Configure the system clock to 180 MHz */
+    SystemClock_Config();
 
-  /* Initialize BSP Led for LED2 */
-  //BSP_LED_Init(LED2);
-  BSP_LED_Init(LED3);
+    /* Initialize BSP Led for LED2 */
+  	BSP_LED_Init(LED2);
+
+    //PARCHE MÍO POR SER OTRA PLACA
+    RCC->AHB1ENR |= (1<<6); //Habilita puerto G (para leds 3 y 4)
+
+    int ledVERDE = 13;
+  	GPIOG->MODER   &=~ (1<<(ledVERDE*2+1));
+  	GPIOG->MODER   |=  (1<<ledVERDE*2);
+  	GPIOG->OTYPER  &=~ (1<<ledVERDE);
+  	GPIOG->OSPEEDR &=~ (3<<ledVERDE*2);
+  	GPIOG->PUPDR   &=~ (3<<ledVERDE*2);
+
+  	int ledROJO = 14;
+	GPIOG->MODER   &=~ (1<<(ledROJO*2+1));
+	GPIOG->MODER   |=  (1<<ledROJO*2);
+	GPIOG->OTYPER  &=~ (1<<ledROJO);
+	GPIOG->OSPEEDR &=~ (3<<ledROJO*2);
+	GPIOG->PUPDR   &=~ (3<<ledROJO*2);
+
 
   /* Infinite loop */
   while (1)
   {
-	  //BSP_LED_Toggle(LED2);
-	  //HAL_Delay(800);
-	  BSP_LED_Toggle(LED3);
-	  HAL_Delay(100);
+	  GPIOG->BSRR |= (1<<ledVERDE);
+	  GPIOG->BSRR |= (1<<(16+ledROJO));
+	  HAL_Delay(500);
+	  GPIOG->BSRR |= (1<<ledROJO);
+	  GPIOG->BSRR |= (1<<(16+ledVERDE));
+	  HAL_Delay(500);
   }
 }
 
