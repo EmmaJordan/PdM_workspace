@@ -41,81 +41,21 @@ UART_HandleTypeDef UartHandle;
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 
+
+#define CONT_LED1 100
+#define CONT_LED2 500
+
 /* Private functions ---------------------------------------------------------*/
-int ledVERDE = 13;
-int ledROJO = 14;
-uint8_t ON_OFF = 0;
-uint8_t start = 0;
-uint32_t tickstart = 0;
-void mi_Delay_NO_bloqueante(uint32_t Delay)
-{
-	uint32_t wait = Delay;
-	/* Add a freq to guarantee minimum wait */
-	if (wait < HAL_MAX_DELAY)
-	{
-		wait += (uint32_t)(uwTickFreq);
-	}
+int ledVERDE = 13; //PG13
+int ledROJO  = 14; //PG14
+uint8_t ON_1 = 0;
+uint8_t ON_2 = 0;
 
-
-	//TOMA INSTANTE MS INICIAL
-	if(start==0)
-	{
-		start = 1;
-		tickstart = HAL_GetTick(); //devuelve uwTick actual
-	}
-	else if(start==1)
-	{
-		if((HAL_GetTick() - tickstart) == wait)
-		{
-			start = 0;
-			if(ON_OFF==0)
-			{
-				ON_OFF=1;
-				GPIOG->BSRR |= (1<<ledVERDE);
-				GPIOG->BSRR |= (1<<(16+ledROJO));
-			}
-			else if(ON_OFF==1)
-			{
-				ON_OFF=0;
-				GPIOG->BSRR |= (1<<ledROJO);
-				GPIOG->BSRR |= (1<<(16+ledVERDE));
-			}
-		}
-	}
-}
-
-
-void delayInit( delay_t * delay, tick_t duration )
-{
-	delay->duration = duration;
-}
-
-bool_t delayRead( delay_t * delay )
-{
-	if(delay->running)
-	{
-		if(HAL_GetTick() >= (delay->startTime + delay->duration))
-		{
-			delay->running = false;
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		delay->startTime = HAL_GetTick();
-		delay->running = true;
-		return false;
-	}
-}
-void delayWrite( delay_t * delay, tick_t duration )
-{
-	delay->duration = duration;
-}
-
+bool_t delayRead( delay_t * delay );
+void delayInit( delay_t * delay, tick_t duration );
+void delayWrite( delay_t * delay, tick_t duration );
+void miToggleLed(uint8_t led);
+void misLeds_Init();
 
 /**
   * @brief  Main program
@@ -126,10 +66,10 @@ int main(void)
 {
    /* STM32F4xx HAL library initialization:
        - Configure the Flash prefetch
-       - Systick timer is configured by default as source of time base, but user 
-         can eventually implement his proper time base source (a general purpose 
-         timer for example or other time source), keeping in mind that Time base 
-         duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and 
+       - Systick timer is configured by default as source of time base, but user
+         can eventually implement his proper time base source (a general purpose
+         timer for example or other time source), keeping in mind that Time base
+         duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and
          handled in milliseconds basis.
        - Set NVIC Group Priority to 4
        - Low Level Initialization
@@ -140,67 +80,134 @@ int main(void)
     SystemClock_Config();
 
     /* Initialize BSP Led for LED2 */
-  	BSP_LED_Init(LED2);
+  	//BSP_LED_Init(LED2);
 
-    //PARCHE MÍO POR USAR OTRA PLACA
-    RCC->AHB1ENR |= (1<<6); //Habilita puerto G (para leds 3 y 4)
+    misLeds_Init();   //PARCHE MÍO POR USAR OTRA PLACA
+
+	static delay_t delay1;
+	static delay_t delay2;
+
+	delayInit(&delay1, CONT_LED1);
+	delayInit(&delay2, CONT_LED2);
+
+	while (1)
+	{
+		if(delayRead(&delay2))  miToggleLed(2);
+		if(delayRead(&delay1))  miToggleLed(1);
 
 
-  	GPIOG->MODER   &=~ (1<<(ledVERDE*2+1));
-  	GPIOG->MODER   |=  (1<<ledVERDE*2);
-  	GPIOG->OTYPER  &=~ (1<<ledVERDE);
-  	GPIOG->OSPEEDR &=~ (3<<ledVERDE*2);
-  	GPIOG->PUPDR   &=~ (3<<ledVERDE*2);
+		//mi_Delay_NO_bloqueante(800); <-- primeras pruebas
+
+		/*HAL_Delay(100);
+		miToggleLed(1);
+		HAL_Delay(500);
+		miToggleLed(2);*/
+	}
+}
+
+// Entrada: Puntero al delay y su duración en ms
+// Salida: Ninguna
+// Función: Inicializa los parámetros internos del delay
+void delayInit( delay_t * delay, tick_t duration )
+{
+	if((delay != NULL) && (duration > 0))			// Verifica que el puntero sea valido y que la duracion sea un valor positivo
+	{
+		delay->duration = duration;
+		delay->running = false;						// Inicializa el delay detenido
+	}
+}
+
+// Entrada: Puntero al delay
+// Salida: Bool que indica si ya transcurrió el tiempo del delay o no.
+// Función: Comprueba si ya transcurrio el tiempo del delay
+bool_t delayRead( delay_t * delay )
+{
+	if((delay != NULL) && (delay > 0))			// Verifica que el puntero sea válido y que la duración sea un valor positivo
+	{
+		if(delay->running)
+		{
+			if(HAL_GetTick() >= (delay->startTime + delay->duration))
+			{
+				delay->running = false;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			delay->startTime = HAL_GetTick();
+			delay->running   = true;
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+// Entrada: Puntero al delay y su duraciónen ms
+// Salida: Ninguna
+// Función: Cambia la duración del delay, sin importar si está corriendo o no
+void delayWrite( delay_t * delay, tick_t duration )
+{
+	if((delay != NULL) && (duration > 0))			// Verifica que el puntero sea válido y que la duración sea un valor positivo
+	{
+		delay->duration = duration;
+	}
+}
+
+void miToggleLed(uint8_t led)
+{
+	if (led == 1) //led verde
+	{
+		if(ON_1==0)
+		{
+			ON_1=1;
+			GPIOG->BSRR |= (1<<ledVERDE);
+		}
+		else if(ON_1==1)
+		{
+			ON_1=0;
+			GPIOG->BSRR |= (1<<(16+ledVERDE));
+		}
+	}
+	else if (led == 2) //led rojo
+	{
+		if(ON_2==0)
+		{
+			ON_2=1;
+			GPIOG->BSRR |= (1<<ledROJO);
+		}
+		else if(ON_2==1)
+		{
+			ON_2=0;
+			GPIOG->BSRR |= (1<<(16+ledROJO));
+		}
+	}
+}
+
+void misLeds_Init()
+{
+	RCC->AHB1ENR |= (1<<6); //Habilita puerto G <-- para leds 3 y 4 (PG13 y PG14)
+
+	GPIOG->MODER   &=~ (1<<(ledVERDE*2+1));
+	GPIOG->MODER   |=  (1<<ledVERDE*2);     //01 --> salida
+	GPIOG->OTYPER  &=~ (1<<ledVERDE);		//0  --> push-pull
+	GPIOG->OSPEEDR &=~ (3<<ledVERDE*2);     //00 --> velocidad baja
+	GPIOG->PUPDR   &=~ (3<<ledVERDE*2);		//00 --> no pull
 
 
 	GPIOG->MODER   &=~ (1<<(ledROJO*2+1));
-	GPIOG->MODER   |=  (1<<ledROJO*2);
-	GPIOG->OTYPER  &=~ (1<<ledROJO);
-	GPIOG->OSPEEDR &=~ (3<<ledROJO*2);
-	GPIOG->PUPDR   &=~ (3<<ledROJO*2);
-
-	static delay_t delayLedVerde;
-	static delay_t delayLedRojo;
-
-	delayInit(&delayLedVerde, 100);
-	delayInit(&delayLedRojo,  500);
-
-	uint8_t ON_ROJO = 0;
-	uint8_t ON_VERDE = 0;
-	/* Infinite loop */
-	while (1)
-	{
-		 if(delayRead(&delayLedVerde))
-		 {
-			if(ON_VERDE==0)
-			{
-				ON_VERDE=1;
-				GPIOG->BSRR |= (1<<ledVERDE);
-			}
-			else if(ON_VERDE==1)
-			{
-				ON_VERDE=0;
-				GPIOG->BSRR |= (1<<(16+ledVERDE));
-			}
-		 }
-		 // has the delay of led2 passed?
-		 if(delayRead(&delayLedRojo))
-		 {
-			if(ON_ROJO==0)
-			{
-				ON_ROJO=1;
-				GPIOG->BSRR |= (1<<ledROJO);
-			}
-			else if(ON_ROJO==1)
-			{
-				ON_ROJO=0;
-				GPIOG->BSRR |= (1<<(16+ledROJO));
-			}
-		 }
-
-	     //mi_Delay_NO_bloqueante(800); <-- primeras pruebas
-	}
+	GPIOG->MODER   |=  (1<<ledROJO*2);		//01 --> salida
+	GPIOG->OTYPER  &=~ (1<<ledROJO);		//0  --> push-pull
+	GPIOG->OSPEEDR &=~ (3<<ledROJO*2);		//00 --> velocidad baja
+	GPIOG->PUPDR   &=~ (3<<ledROJO*2);		//00 --> no pull
 }
+
 
 
 /**
@@ -312,5 +319,46 @@ void assert_failed(uint8_t *file, uint32_t line)
 /**
   * @}
   */
+
+/*
+ * uint8_t ON_OFF = 0;
+uint8_t start = 0;
+uint32_t tickstart = 0;
+void mi_Delay_NO_bloqueante(uint32_t Delay)
+{
+	uint32_t wait = Delay;
+	if (wait < HAL_MAX_DELAY)
+	{
+		wait += (uint32_t)(uwTickFreq);
+	}
+
+
+	//TOMA INSTANTE MS INICIAL
+	if(start==0)
+	{
+		start = 1;
+		tickstart = HAL_GetTick(); //devuelve uwTick actual
+	}
+	else if(start==1)
+	{
+		if((HAL_GetTick() - tickstart) == wait)
+		{
+			start = 0;
+			if(ON_OFF==0)
+			{
+				ON_OFF=1;
+				GPIOG->BSRR |= (1<<ledVERDE);
+				GPIOG->BSRR |= (1<<(16+ledROJO));
+			}
+			else if(ON_OFF==1)
+			{
+				ON_OFF=0;
+				GPIOG->BSRR |= (1<<ledROJO);
+				GPIOG->BSRR |= (1<<(16+ledVERDE));
+			}
+		}
+	}
+}
+ * */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
