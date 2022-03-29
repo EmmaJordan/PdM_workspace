@@ -1,14 +1,22 @@
-23:41:00 **** Incremental Build of configuration Debug for project Practica3_Emma ****
+14:49:31 **** Incremental Build of configuration Debug for project practica_4.1_Emma ****
 make -j4 all 
-arm-none-eabi-size   Practica3_Emma.elf 
+arm-none-eabi-gcc "../Src/main_TP4.1_Emma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/CMSIS/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/BSP/STM32F4xx_Nucleo_144" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/Core/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/API/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main_TP4.1_Emma.d" -MT"Src/main_TP4.1_Emma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main_TP4.1_Emma.o"
+arm-none-eabi-gcc "../Drivers/API/src/API_delay.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/CMSIS/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/BSP/STM32F4xx_Nucleo_144" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/Core/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/practica_4.1_Emma/Drivers/API/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_delay.d" -MT"Drivers/API/src/API_delay.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_delay.o"
+arm-none-eabi-gcc -o "practica_4.1_Emma.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\practica_4.1_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="practica_4.1_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: practica_4.1_Emma.elf
+ 
+arm-none-eabi-size   practica_4.1_Emma.elf 
+arm-none-eabi-objdump -h -S  practica_4.1_Emma.elf  > "practica_4.1_Emma.list"
    text	   data	    bss	    dec	    hex	filename
-   6636	     48	   1576	   8260	   2044	Practica3_Emma.elf
+   6784	     48	   1592	   8424	   20e8	practica_4.1_Emma.elf
 Finished building: default.size.stdout
  
-23:41:13 **** Incremental Build of configuration Debug for project Practica3_Emma ****
+Finished building: practica_4.1_Emma.list
+ 
+14:49:44 **** Incremental Build of configuration Debug for project practica_4.1_Emma ****
 make -j4 all 
-arm-none-eabi-size   Practica3_Emma.elf 
+arm-none-eabi-size   practica_4.1_Emma.elf 
    text	   data	    bss	    dec	    hex	filename
-   6636	     48	   1576	   8260	   2044	Practica3_Emma.elf
+   6784	     48	   1592	   8424	   20e8	practica_4.1_Emma.elf
 Finished building: default.size.stdout
  
