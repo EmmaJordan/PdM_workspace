@@ -1,0 +1,16 @@
+/*
+ * API_debounce.h
+ *
+ *  Created on: 29 mar. 2022
+ *      Author: Win10
+ */
+
+#ifndef API_INC_API_DEBOUNCE_H_
+#define API_INC_API_DEBOUNCE_H_
+
+void debounceFSM_init();	// debe cargar el estado inicial o reiniciar en caso de error
+void debounceFSM_update();	// debe leer las entradas, resolver la lógica de transición de
+							// estados y actualizar las salidas (llamado periódico)
+
+
+#endif /* API_INC_API_DEBOUNCE_H_ */

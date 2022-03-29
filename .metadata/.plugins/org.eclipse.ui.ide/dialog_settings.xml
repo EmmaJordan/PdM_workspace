@@ -17,6 +17,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Repo_Postolov\PdM\Practica4.2"/>
 			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Repo_Amilcar\PdM_AmilcarRincon\practica3"/>
 			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Repo_Constantino\PdM_workspace\Practica_2_constantino"/>
 			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Repo_Constantino\PdM_workspace\Practica_2_vel"/>

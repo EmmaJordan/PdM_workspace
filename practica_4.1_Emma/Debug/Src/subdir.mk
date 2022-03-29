@@ -5,13 +5,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Src/main_TP4.1_Emma.c 
+../Src/main.c 
 
 OBJS += \
-./Src/main_TP4.1_Emma.o 
+./Src/main.o 
 
 C_DEPS += \
-./Src/main_TP4.1_Emma.d 
+./Src/main.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -21,7 +21,7 @@ Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/main_TP4.1_Emma.d ./Src/main_TP4.1_Emma.o ./Src/main_TP4.1_Emma.su
+	-$(RM) ./Src/main.d ./Src/main.o ./Src/main.su
 
 .PHONY: clean-Src
 

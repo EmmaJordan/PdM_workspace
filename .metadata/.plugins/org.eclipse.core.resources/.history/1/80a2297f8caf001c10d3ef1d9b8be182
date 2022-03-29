@@ -1,0 +1,80 @@
+/*
+ * API_debounce.c
+ *
+ *  Created on: 29 mar. 2022
+ *      Author: Win10
+ */
+
+#include "API_debounce.h"
+
+#define BUTTON_PRESSED  (GPIOA->IDR & (1<<0) ) //EMMA
+//#define BUTTON_PRESSED  (GPIOC->IDR & (1<<13) ) //CESE
+
+//Función: lee las entradas, resuelve la lógica de transición de datos, actualiza las salidas
+//Entrada: ninguna
+//Salida: ninguna
+void debounceFSM_update()
+{
+	switch (actualState)
+	{
+		case BUTTON_UP:
+
+					if (BUTTON_PRESSED)
+					{
+						actualState = BUTTON_FALLING;
+					}
+					break;
+
+		case BUTTON_FALLING:
+
+					if( delayRead(&delayAntiRebote) )
+					{
+						HAL_Delay(40);
+						if (BUTTON_PRESSED)
+						{
+							buttonPressed();
+							actualState = BUTTON_DOWN;
+						}
+						else
+						{
+							actualState = BUTTON_UP;
+						}
+					}
+					break;
+
+		case BUTTON_DOWN:
+
+					if (!BUTTON_PRESSED)
+					{
+						actualState = BUTTON_RAISING;
+					}
+					break;
+
+		case BUTTON_RAISING:
+
+					if( delayRead(&delayAntiRebote) )
+					{
+						if (!BUTTON_PRESSED)
+						{
+							buttonReleased();
+							actualState = BUTTON_UP;
+						}
+						else
+						{
+							actualState = BUTTON_DOWN;
+						}
+					}
+					break;
+		default:
+					break;
+	}
+}
+
+//Función: carga el estado inicial
+//Entrada: ninguna
+//Salida:  ninguna
+void debounceFSM_init()
+{
+	actualState = BUTTON_UP;
+}
+

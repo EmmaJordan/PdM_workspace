@@ -1,0 +1,184 @@
+/*
+ * API_debounce.c
+ *
+ *  Created on: 29 mar. 2022
+ *      Author: Win10
+ */
+
+#include "API_debounce.h"
+
+#define BUTTON_PRESSED  (GPIOA->IDR & (1<<0) ) //EMMA
+//#define BUTTON_PRESSED  (GPIOC->IDR & (1<<13) ) //CESE
+
+//Privada
+typedef enum{
+	BUTTON_UP,
+	BUTTON_FALLING,
+	BUTTON_DOWN,
+	BUTTON_RAISING,
+} debounceState_t;
+
+static debounceState_t actualState;
+static bool_t PrivateGlobalVariable;
+
+//Función: cambia estado de LED1
+//Entrada: ninguna
+//Salida: ninguna
+void buttonPressed()
+{
+	miToggleLed(1);
+}
+
+//Función: cambia estado de LED3
+//Entrada: ninguna
+//Salida: ninguna
+void buttonReleased()
+{
+	miToggleLed(3);
+}
+
+delay_t delayLED2;
+tick_t  timeLED2 = 200;
+
+//Función: lee las entradas, resuelve la lógica de transición de datos, actualiza las salidas
+//Entrada: ninguna
+//Salida: ninguna
+//Nota: es una función pública porque se llama desde fuera del módulo (main)
+void debounceFSM_update()
+{
+	switch (actualState)
+	{
+		case BUTTON_UP:
+					if ( delayRead(&delayLED2) ) miToggleLed(2);
+					if ( readKey() )
+					{
+						actualState = BUTTON_FALLING;
+					}
+					break;
+
+		case BUTTON_FALLING:
+
+					if( 1 ) //delayRead(&delayAntiRebote) )
+					{
+						if ( readKey() )
+						{
+							buttonPressed();
+							actualState = BUTTON_DOWN;
+						}
+						else
+						{
+							actualState = BUTTON_UP;
+						}
+					}
+					break;
+
+		case BUTTON_DOWN:
+
+					if ( !readKey() )
+					{
+						actualState = BUTTON_RAISING;
+					}
+					break;
+
+		case BUTTON_RAISING:
+
+					if( 1 ) //delayRead(&delayAntiRebote) )
+					{
+						if ( !readKey() )
+						{
+							buttonReleased();
+							actualState = BUTTON_UP;
+						}
+						else
+						{
+							actualState = BUTTON_DOWN;
+						}
+					}
+					break;
+		default:
+					break;
+	}
+}
+
+//Función: carga el estado inicial
+//Entrada: ninguna
+//Salida:  ninguna
+//Nota: es una función pública porque se llama desde fuera del módulo (main)
+void debounceFSM_init()
+{
+	actualState = BUTTON_UP;
+}
+
+//Función: lectura del botón de usuario
+//Entrada: ninguna
+//Salida: booleano que avisa si se presionó (TRUE) o no (FALSE) el botón
+bool_t readKey()
+{
+	PrivateGlobalVariable  = 0;
+	if( !BUTTON_PRESSED )
+	{
+		PrivateGlobalVariable = 1;
+	}
+	return PrivateGlobalVariable;
+}
+
+
+
+int miLed1 = 0;
+int miLed2 = 7;
+int miLed2bis = 13;
+int miLed3 = 1;
+int miLed3bis = 14; //para que sea compatible con placa Nucleo CESE
+
+uint8_t ON_1 = 0;
+uint8_t ON_2 = 0;
+uint8_t ON_3 = 0;
+
+// Entrada: Número de led
+// Salida: Ninguna
+// Función: Cambio de estado de led de entrada
+void miToggleLed(uint8_t led)
+{
+	if (led == 1)
+	{
+		if(ON_1==0)
+		{
+			ON_1=1;
+			GPIOB->BSRR |= (1<<miLed1);
+		}
+		else if(ON_1==1)
+		{
+			ON_1=0;
+			GPIOB->BSRR |= (1<<(16+miLed1));
+		}
+	}
+	else if (led == 2) //led verde
+	{
+		if(ON_2==0)
+		{
+			ON_2=1;
+			GPIOB->BSRR |= (1<<miLed2);
+		}
+		else if(ON_2==1)
+		{
+			ON_2=0;
+			GPIOB->BSRR |= (1<<(16+miLed2));
+		}
+	}
+	else if (led == 3) //led rojo
+	{
+		if(ON_3==0)
+		{
+			ON_3=1;
+			GPIOB->BSRR |= (1<<miLed3);
+			GPIOB->BSRR |= (1<<miLed3bis);
+		}
+		else if(ON_3==1)
+		{
+			ON_3=0;
+			GPIOB->BSRR |= (1<<(16+miLed3));
+			GPIOB->BSRR |= (1<<(16+miLed3bis));
+		}
+	}
+}
+
