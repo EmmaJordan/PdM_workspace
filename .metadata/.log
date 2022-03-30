@@ -3223,3 +3223,18 @@ java.util.ConcurrentModificationException
 
 !ENTRY org.eclipse.cdt.core 1 0 2022-03-29 17:57:47.669
 !MESSAGE Indexed 'Practica4.2' (102 sources, 212 headers) in 27,4 sec: 29.900 declarations; 94.739 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0,12 %)
+!SESSION 2022-03-29 21:27:16.946 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-03-29 21:27:23.958
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-03-29 21:27:24.051
+!MESSAGE Log4j initialized with config file C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-29 21:27:37.734
+!MESSAGE Started RMI Server, listening on port 41337

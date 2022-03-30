@@ -8,8 +8,8 @@
 #include "API_delay.h"
 #include "API_debounce.h"
 
-#define BUTTON_PRESSED  (GPIOA->IDR & (1<<0) ) //EMMA
-//#define BUTTON_PRESSED  (GPIOC->IDR & (1<<13) ) //CESE
+//#define BUTTON_PRESSED  (GPIOA->IDR & (1<<0) ) //EMMA
+#define BUTTON_PRESSED  (GPIOC->IDR & (1<<13) ) //CESE
 
 //Privada
 typedef enum{
