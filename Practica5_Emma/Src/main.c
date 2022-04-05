@@ -109,7 +109,7 @@ int main(void)
   while (1)
   {
 	  BSP_LED_Toggle(LED2);
-	  HAL_Delay(500);
+	  HAL_Delay(200);
 	  printf("%c\n\r",miChar++);
   }
 }

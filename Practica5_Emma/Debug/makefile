@@ -38,34 +38,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Ej2_uart_Emma
+BUILD_ARTIFACT_NAME := Practica5_Emma
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-Ej2_uart_Emma.elf \
+Practica5_Emma.elf \
 
 MAP_FILES += \
-Ej2_uart_Emma.map \
+Practica5_Emma.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-Ej2_uart_Emma.list \
+Practica5_Emma.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: Ej2_uart_Emma.elf secondary-outputs
+main-build: Practica5_Emma.elf secondary-outputs
 
 # Tool invocations
-Ej2_uart_Emma.elf Ej2_uart_Emma.map: $(OBJS) $(USER_OBJS) C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Ej2_uart_Emma\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Ej2_uart_Emma.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Ej2_uart_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ej2_uart_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Practica5_Emma.elf Practica5_Emma.map: $(OBJS) $(USER_OBJS) C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Practica5_Emma\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Practica5_Emma.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Practica5_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica5_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -74,14 +74,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-Ej2_uart_Emma.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Ej2_uart_Emma.list"
+Practica5_Emma.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Practica5_Emma.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Ej2_uart_Emma.elf Ej2_uart_Emma.list Ej2_uart_Emma.map default.size.stdout
+	-$(RM) Practica5_Emma.elf Practica5_Emma.list Practica5_Emma.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
