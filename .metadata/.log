@@ -3238,3 +3238,177 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-03-29 21:27:37.734
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-04-01 15:38:47.925 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-04-01 15:38:55.959
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-04-01 15:38:56.069
+!MESSAGE Log4j initialized with config file C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-04-01 15:39:17.470
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-04-01 17:49:36.909 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-04-01 17:49:47.252
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-04-01 17:49:47.377
+!MESSAGE Log4j initialized with config file C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-04-01 17:50:10.686
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-04-01 18:06:39.883
+!MESSAGE Indexed 'practica_04.1_Adel' (0 sources, 0 headers) in 0 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-04-01 18:22:20.240
+!MESSAGE Indexed 'practica_4.2' (101 sources, 212 headers) in 10,7 sec: 29.894 declarations; 94.580 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0,12 %)
+!SESSION 2022-04-02 11:51:36.896 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-04-02 11:51:50.364
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-04-02 11:51:50.706
+!MESSAGE Log4j initialized with config file C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-04-02 11:52:12.670
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-04-02 11:56:16.280
+!MESSAGE Indexed 'Ej2_uart_Emma' (99 sources, 208 headers) in 24 sec: 29.799 declarations; 90.731 references; 6 unresolved inclusions; 1.836 syntax errors; 1.822 unresolved names (1,5 %)
+!SESSION 2022-04-05 15:33:10.158 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-04-05 15:33:20.852
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-04-05 15:33:21.018
+!MESSAGE Log4j initialized with config file C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-04-05 15:33:43.703
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-04-05 16:08:04.132
+!MESSAGE Indexed 'Practica5_Emma' (99 sources, 208 headers) in 22 sec: 29.800 declarations; 90.734 references; 6 unresolved inclusions; 1.836 syntax errors; 1.822 unresolved names (1,5 %)
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-04-05 16:08:08.333
+!MESSAGE Error
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(CCorePlugin.java:881)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.load(ScannerConfigInfoFactory2.java:102)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.<init>(ScannerConfigInfoFactory2.java:96)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2.createInfoSet(ScannerConfigInfoFactory2.java:1373)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigProfileManager.createScannerConfigBuildInfo2Set(ScannerConfigProfileManager.java:223)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getContainer(CfgScannerConfigInfoFactory2.java:118)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.createMap(CfgScannerConfigInfoFactory2.java:144)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getInfo(CfgScannerConfigInfoFactory2.java:83)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(CfgDiscoveredPathManager.java:433)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(CfgDiscoveredPathManager.java:418)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(CfgDiscoveredPathManager.java:168)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(ProfileInfoProvider.java:68)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(BuildEntryStorage.java:203)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(BuildEntryStorage.java:193)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(AbstractEntryStorage.java:74)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(AbstractEntryStorage.java:37)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(BuildLanguageData.java:163)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(CDefaultLanguageData.java:100)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(CDefaultLanguageData.java:91)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(CDefaultLanguageData.java:84)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(CLanguageSettingCache.java:49)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(CLanguageSettingCache.java:38)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(CFolderDescriptionCache.java:82)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(CDefaultFolderData.java:60)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(CFolderDescriptionCache.java:40)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(CConfigurationDescriptionCache.java:242)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(CDefaultConfigurationData.java:117)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:154)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsScannerInfoProvider.getScannerInformation(LanguageSettingsScannerInfoProvider.java:78)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsScannerInfoProvider.getScannerInformation(LanguageSettingsScannerInfoProvider.java:1)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getScannerInfo(TranslationUnit.java:1070)
+	at org.eclipse.cdt.internal.core.pdom.indexer.ProjectIndexerInputAdapter.getBuildConfiguration(ProjectIndexerInputAdapter.java:160)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.getScannerInfo(AbstractIndexerTask.java:1030)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.parseLinkage(AbstractIndexerTask.java:909)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:572)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:164)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMUpdateTask.run(PDOMUpdateTask.java:96)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:160)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.core.jobs 4 2 2022-04-05 16:08:08.398
+!MESSAGE An internal error occurred during: "C/C++ Indexer".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.core.CCorePlugin.getCProjectDescription(CCorePlugin.java:881)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.load(ScannerConfigInfoFactory2.java:102)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2$ScannerConfigInfoSet.<init>(ScannerConfigInfoFactory2.java:96)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigInfoFactory2.createInfoSet(ScannerConfigInfoFactory2.java:1373)
+	at org.eclipse.cdt.make.internal.core.scannerconfig2.ScannerConfigProfileManager.createScannerConfigBuildInfo2Set(ScannerConfigProfileManager.java:223)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getContainer(CfgScannerConfigInfoFactory2.java:118)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.createMap(CfgScannerConfigInfoFactory2.java:144)
+	at org.eclipse.cdt.build.internal.core.scannerconfig2.CfgScannerConfigInfoFactory2$CfgInfo.getInfo(CfgScannerConfigInfoFactory2.java:83)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(CfgDiscoveredPathManager.java:433)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getContextInfo(CfgDiscoveredPathManager.java:418)
+	at org.eclipse.cdt.build.internal.core.scannerconfig.CfgDiscoveredPathManager.getDiscoveredInfo(CfgDiscoveredPathManager.java:168)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.ProfileInfoProvider.getEntryValues(ProfileInfoProvider.java:68)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.getDiscoveredEntries(BuildEntryStorage.java:203)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildEntryStorage.putEntriesToLevel(BuildEntryStorage.java:193)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.initCache(AbstractEntryStorage.java:74)
+	at org.eclipse.cdt.core.settings.model.util.AbstractEntryStorage.getEntries(AbstractEntryStorage.java:37)
+	at org.eclipse.cdt.managedbuilder.internal.dataprovider.BuildLanguageData.getEntries(BuildLanguageData.java:163)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.getEntriesToCopy(CDefaultLanguageData.java:100)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.createStore(CDefaultLanguageData.java:91)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultLanguageData.copySettingsFrom(CDefaultLanguageData.java:84)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.copySettingsFrom(CLanguageSettingCache.java:49)
+	at org.eclipse.cdt.internal.core.settings.model.CLanguageSettingCache.<init>(CLanguageSettingCache.java:38)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.copyLanguageData(CFolderDescriptionCache.java:82)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultFolderData.copyDataFrom(CDefaultFolderData.java:60)
+	at org.eclipse.cdt.internal.core.settings.model.CFolderDescriptionCache.<init>(CFolderDescriptionCache.java:40)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.copyFolderData(CConfigurationDescriptionCache.java:242)
+	at org.eclipse.cdt.core.settings.model.extension.impl.CDefaultConfigurationData.copySettingsFrom(CDefaultConfigurationData.java:117)
+	at org.eclipse.cdt.internal.core.settings.model.CConfigurationDescriptionCache.loadData(CConfigurationDescriptionCache.java:154)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescription.loadDatas(CProjectDescription.java:199)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.loadProjectDescription(XmlProjectDescriptionStorage.java:510)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:240)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:427)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:409)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:403)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:396)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsScannerInfoProvider.getScannerInformation(LanguageSettingsScannerInfoProvider.java:78)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsScannerInfoProvider.getScannerInformation(LanguageSettingsScannerInfoProvider.java:1)
+	at org.eclipse.cdt.internal.core.model.TranslationUnit.getScannerInfo(TranslationUnit.java:1070)
+	at org.eclipse.cdt.internal.core.pdom.indexer.ProjectIndexerInputAdapter.getBuildConfiguration(ProjectIndexerInputAdapter.java:160)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.getScannerInfo(AbstractIndexerTask.java:1030)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.parseLinkage(AbstractIndexerTask.java:909)
+	at org.eclipse.cdt.internal.core.pdom.AbstractIndexerTask.runTask(AbstractIndexerTask.java:572)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMIndexerTask.run(PDOMIndexerTask.java:164)
+	at org.eclipse.cdt.internal.core.pdom.indexer.PDOMUpdateTask.run(PDOMUpdateTask.java:96)
+	at org.eclipse.cdt.internal.core.pdom.PDOMIndexerJob.run(PDOMIndexerJob.java:160)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
