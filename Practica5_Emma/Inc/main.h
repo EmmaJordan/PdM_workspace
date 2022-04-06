@@ -21,7 +21,8 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
-//#define PLACA_NUCLEO
+#define PLACA_NUCLEO
+
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
@@ -66,6 +67,9 @@
 	#define USARTx_RX_GPIO_PORT              GPIOA
 	#define USARTx_RX_AF                     GPIO_AF7_USART1
 #endif
+
+void inputsInit();
+
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 

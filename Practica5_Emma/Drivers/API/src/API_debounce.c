@@ -30,6 +30,7 @@ static bool_t PrivateGlobalVariable;
 void buttonPressed()
 {
 	miToggleLed(1);
+	printf("Flanco de subida detectado\r\n");
 }
 
 //Función: cambia estado de LED3
@@ -38,6 +39,7 @@ void buttonPressed()
 void buttonReleased()
 {
 	miToggleLed(3);
+	printf("Flanco de bajada detectado\r\n");
 }
 
 

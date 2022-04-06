@@ -42,51 +42,69 @@ static void Error_Handler(void);
   * @param  None
   * @retval None
   */
+#define Led_1    0
+#define Led_2    7
+#define Led_3 	 1
+#define Led_3bis 14
+
+#define TIME1 100
+#define TIME2 500
+
 int main(void)
 {
-  /* STM32F4xx HAL library initialization:
-       - Configure the Flash prefetch
-       - Systick timer is configured by default as source of time base, but user 
-         can eventually implement his proper time base source (a general purpose 
-         timer for example or other time source), keeping in mind that Time base 
-         duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and 
-         handled in milliseconds basis.
-       - Set NVIC Group Priority to 4
-       - Low Level Initialization
-     */
-  HAL_Init();
+	/* STM32F4xx HAL library initialization:
+	   - Configure the Flash prefetch
+	   - Systick timer is configured by default as source of time base, but user
+		 can eventually implement his proper time base source (a general purpose
+		 timer for example or other time source), keeping in mind that Time base
+		 duration should be kept 1ms since PPP_TIMEOUT_VALUEs are defined and
+		 handled in milliseconds basis.
+	   - Set NVIC Group Priority to 4
+	   - Low Level Initialization
+	 */
+	HAL_Init();
 
-  /* Configure the system clock to 180 MHz */
-  SystemClock_Config();
+	/* Configure the system clock to 180 MHz */
+	SystemClock_Config();
 
-  /* Initialize BSP Led for LED2 and LED3*/
-  BSP_LED_Init(LED2);
-  BSP_LED_Init(LED3);
+	/* Initialize Inputs */
+	inputsInit();
+
+	delay_t delayLED2;
+	tick_t  timeLED2 = 100;
+	delayInit(&delayLED2, timeLED2);
+
+	/* Initialize FSM */
+	debounceFSM_init();
 
 
-  /*##-1- Configure the UART peripheral ######################################*/
-  /* Put the USART peripheral in the Asynchronous mode (UART Mode) */
-  /* UART configured as follows:
-      - Word Length = 8 Bits (7 data bit + 1 parity bit) : 
-	                  BE CAREFUL : Program 7 data bits + 1 parity bit in PC HyperTerminal
-      - Stop Bit    = One Stop bit
-      - Parity      = ODD parity
-      - BaudRate    = 9600 baud
-      - Hardware flow control disabled (RTS and CTS signals) */
-  uartinit();
+	/*##-1- Configure the UART peripheral ######################################*/
+	/* Put the USART peripheral in the Asynchronous mode (UART Mode) */
+	/* UART configured as follows:
+	  - Word Length = 8 Bits (7 data bit + 1 parity bit) :
+					  BE CAREFUL : Program 7 data bits + 1 parity bit in PC HyperTerminal
+	  - Stop Bit    = One Stop bit
+	  - Parity      = ODD parity
+	  - BaudRate    = 9600 baud
+	  - Hardware flow control disabled (RTS and CTS signals) */
+	uartinit();
 
-  /* Output a message on Hyperterminal using printf function */
-  //printf("\n\r UART Printf Example: retarget the C library printf function to the UART\n\r");
-  //printf("** Test finished successfully. ** \n\r");
+	/* Output a message on Hyperterminal using printf function */
+	//printf("\n\r UART Printf Example: retarget the C library printf function to the UART\n\r");
+	//printf("** Test finished successfully. ** \n\r");
 
-  char miChar = 'a';
-  /* Infinite loop */
-  while (1)
-  {
-	  BSP_LED_Toggle(LED2);
-	  HAL_Delay(500);
-	  printf("%c\n\r",miChar++);
-  }
+	/* Infinite loop */
+	while (1)
+	{
+		debounceFSM_update();
+		if(readKey())
+		{
+			if (timeLED2 == TIME1) 	 	timeLED2 = TIME2;
+			else if(timeLED2 == TIME2) 	timeLED2 = TIME1;
+			delayWrite(&delayLED2,timeLED2);
+		}
+		if(delayRead(&delayLED2)) miToggleLed(2);
+	}
 }
 
 

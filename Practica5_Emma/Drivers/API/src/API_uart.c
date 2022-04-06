@@ -27,7 +27,7 @@ UART_HandleTypeDef UartHandle;
 #define UARTn 3
 bool_t uartinit()
 {
-	UartHandle.Instance        = USART1;
+	UartHandle.Instance        = USART3; //uart 1 para placa discovery
 	UartHandle.Init.BaudRate   = myBaudRate;
 	UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
 	UartHandle.Init.StopBits   = UART_STOPBITS_1;
