@@ -51,8 +51,8 @@ bool_t uartinit()
 }
 
 /*
-	Función: envía un mensaje por la UART configurada
-	Entradas: *pstring mensaje a enviar
+	Función: envía un mensaje por la UART configurada, completo (hasta el caracter ‘\0’)
+	Entradas: *pstring puntero de mensaje a enviar
 	Salida: ninguna
 */
 void uartsendString(uint8_t *pstring) {
@@ -67,7 +67,7 @@ void uartsendString(uint8_t *pstring) {
 
 /*
 	Función: envía un mensaje por la UART configurada, limitado por tamaño
-	Entradas: *pstring mensaje a enviar, size tamaño del mensaje a enviar
+	Entradas 1: *pstring puntero de mensaje a enviar, size tamaño del mensaje a enviar
 	Salida: ninguna
 */
 void uartSendStringSize(uint8_t *pstring, uint16_t size)
