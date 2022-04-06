@@ -67,7 +67,8 @@ void uartsendString(uint8_t *pstring) {
 
 /*
 	Función: envía un mensaje por la UART configurada, limitado por tamaño
-	Entradas 1: *pstring puntero de mensaje a enviar, size tamaño del mensaje a enviar
+	Entrada 1: *pstring puntero de mensaje a enviar
+	Entrada 2: size tamaño del mensaje a enviar
 	Salida: ninguna
 */
 void uartSendStringSize(uint8_t *pstring, uint16_t size)
@@ -83,7 +84,8 @@ void uartSendStringSize(uint8_t *pstring, uint16_t size)
 
 /*
 	Función: recibe un mensaje por la UART configurada
-	Entradas: *pstring mensaje a enviar, size tamaño del mensaje a enviar
+	Entrada 1: *pstring mensaje a enviar
+	Entrada 2: size tamaño del mensaje a enviar
 	Salida: ninguna
 */
 void uartReceiveStringSize(uint8_t *pstring, uint16_t size) {

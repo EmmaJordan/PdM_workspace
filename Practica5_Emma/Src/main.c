@@ -20,6 +20,8 @@
 
 #include "main.h" //#define PLACA_NUCLEO para corregir
 #include "API_uart.h"
+#include "API_delay.h"
+#include "API_debounce.h"
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
