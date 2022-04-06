@@ -39,34 +39,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := practica_4.2_Emma
+BUILD_ARTIFACT_NAME := Practica4.2_Emma
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-practica_4.2_Emma.elf \
+Practica4.2_Emma.elf \
 
 MAP_FILES += \
-practica_4.2_Emma.map \
+Practica4.2_Emma.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-practica_4.2_Emma.list \
+Practica4.2_Emma.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: practica_4.2_Emma.elf secondary-outputs
+main-build: Practica4.2_Emma.elf secondary-outputs
 
 # Tool invocations
-practica_4.2_Emma.elf practica_4.2_Emma.map: $(OBJS) $(USER_OBJS) C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\practica_4.2_Emma\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "practica_4.2_Emma.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\practica_4.2_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="practica_4.2_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Practica4.2_Emma.elf Practica4.2_Emma.map: $(OBJS) $(USER_OBJS) C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Practica4.2_Emma\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Practica4.2_Emma.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Practica4.2_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica4.2_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -75,14 +75,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-practica_4.2_Emma.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "practica_4.2_Emma.list"
+Practica4.2_Emma.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Practica4.2_Emma.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout practica_4.2_Emma.elf practica_4.2_Emma.list practica_4.2_Emma.map
+	-$(RM) Practica4.2_Emma.elf Practica4.2_Emma.list Practica4.2_Emma.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

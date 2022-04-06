@@ -1,14 +1,21 @@
-17:08:00 **** Incremental Build of configuration Debug for project Practica5_Emma ****
+22:46:50 **** Incremental Build of configuration Debug for project Practica5_intento2 ****
 make -j4 all 
-arm-none-eabi-gcc "../Drivers/API/src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/CMSIS/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/BSP/STM32F4xx_Nucleo_144" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/Core/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/API" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/API/src" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_Emma/Drivers/API/inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/src/API_uart.d" -MT"Drivers/API/src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/src/API_uart.o"
-arm-none-eabi-gcc -o "Practica5_Emma.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Practica5_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica5_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Practica5_Emma.elf
+arm-none-eabi-gcc "../Drivers/API/API_uart/src/API_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_intento2/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_intento2/Drivers/CMSIS/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_intento2/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_intento2/Drivers/BSP/STM32F4xx_Nucleo_144" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_intento2/Drivers/API/API_uart/inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Practica5_intento2/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/API/API_uart/src/API_uart.d" -MT"Drivers/API/API_uart/src/API_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/API/API_uart/src/API_uart.o"
+arm-none-eabi-gcc -o "Practica5_intento2.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Practica5_intento2\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Practica5_intento2.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Practica5_intento2.elf
  
-arm-none-eabi-size   Practica5_Emma.elf 
-arm-none-eabi-objdump -h -S  Practica5_Emma.elf  > "Practica5_Emma.list"
+arm-none-eabi-size   Practica5_intento2.elf 
+arm-none-eabi-objdump -h -S  Practica5_intento2.elf  > "Practica5_intento2.list"
    text	   data	    bss	    dec	    hex	filename
-  13340	    132	   1660	  15132	   3b1c	Practica5_Emma.elf
+  13500	    132	   1660	  15292	   3bbc	Practica5_intento2.elf
 Finished building: default.size.stdout
  
-Finished building: Practica5_Emma.list
+Finished building: Practica5_intento2.list
+ 
+22:47:07 **** Incremental Build of configuration Debug for project Practica5_intento2 ****
+make -j4 all 
+arm-none-eabi-size   Practica5_intento2.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13500	    132	   1660	  15292	   3bbc	Practica5_intento2.elf
+Finished building: default.size.stdout
  
