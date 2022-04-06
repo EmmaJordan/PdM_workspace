@@ -3481,3 +3481,6 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY org.eclipse.cdt.core 1 0 2022-04-05 19:31:50.541
 !MESSAGE Indexed 'poc_5' (101 sources, 215 headers) in 10,4 sec: 30.063 declarations; 94.729 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0,12 %)
+
+!ENTRY org.eclipse.cdt.core 1 0 2022-04-05 22:49:50.897
+!MESSAGE Indexed 'Practica5_Emma' (100 sources, 214 headers) in 10,8 sec: 30.057 declarations; 94.680 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0,12 %)
