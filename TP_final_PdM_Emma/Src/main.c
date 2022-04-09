@@ -30,8 +30,6 @@
 
 /* Private function prototypes -----------------------------------------------*/
 
-
-
 static void SystemClock_Config(void);
 static void Error_Handler(void);
 
