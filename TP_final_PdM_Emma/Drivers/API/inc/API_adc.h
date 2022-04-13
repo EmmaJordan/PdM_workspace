@@ -13,6 +13,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_nucleo_144.h"
 
+
 typedef bool bool_t;
 
 /**
@@ -23,7 +24,8 @@ typedef bool bool_t;
  * - COM usado
  * - baud rate
  */
-bool_t ADCinit();
+
+//bool_t ADCinit();
 
 
 #endif /* API_INC_API_ADC_H_ */

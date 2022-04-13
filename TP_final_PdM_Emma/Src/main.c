@@ -18,15 +18,22 @@
   ******************************************************************************
   */
 
-#include "main.h" //#define PLACA_NUCLEO para corregir
+#include "main.h"
 #include "API_uart.h"
 #include "API_delay.h"
 #include "API_debounce.h"
+
+
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+/* ADC handler declaration */
+ADC_HandleTypeDef    AdcHandle;
+
+/* Variable used to get converted value */
+__IO uint16_t uhADCxConvertedValue = 0;
 
 /* Private function prototypes -----------------------------------------------*/
 
@@ -48,8 +55,11 @@ static void Error_Handler(void);
 #define TIME1 100
 #define TIME2 500
 
+
 int main(void)
 {
+	ADC_ChannelConfTypeDef sConfig;
+
 	/* STM32F4xx HAL library initialization:
 	   - Configure the Flash prefetch
 	   - Systick timer is configured by default as source of time base, but user
@@ -87,23 +97,71 @@ int main(void)
 	  - Hardware flow control disabled (RTS and CTS signals) */
 	uartinit();
 
-	/* Output a message on Hyperterminal using printf function */
-	//printf("\n\r UART Printf Example: retarget the C library printf function to the UART\n\r");
-	//printf("** Test finished successfully. ** \n\r");
+	//----------------ADC---------------//
 
-	/* Infinite loop */
+	/*##-1- Configure the ADC peripheral #######################################*/
+	AdcHandle.Instance                   = ADCx;
+	AdcHandle.Init.ClockPrescaler        = ADC_CLOCKPRESCALER_PCLK_DIV2;
+	AdcHandle.Init.Resolution            = ADC_RESOLUTION12b;
+	AdcHandle.Init.ScanConvMode          = DISABLE;                       /* Sequencer disabled (ADC conversion on only 1 channel: channel set on rank 1) */
+	AdcHandle.Init.ContinuousConvMode    = ENABLE;                        /* Continuous mode disabled to have only 1 conversion at each conversion trig */
+	AdcHandle.Init.DiscontinuousConvMode = DISABLE;                       /* Parameter discarded because sequencer is disabled */
+	AdcHandle.Init.NbrOfDiscConversion   = 0;
+	AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE;        /* Conversion start trigged at each external event */
+	AdcHandle.Init.ExternalTrigConv      = ADC_EXTERNALTRIGCONV_T1_CC1;
+	AdcHandle.Init.DataAlign             = ADC_DATAALIGN_RIGHT;
+	AdcHandle.Init.NbrOfConversion       = 1;
+	AdcHandle.Init.DMAContinuousRequests = ENABLE;
+	AdcHandle.Init.EOCSelection          = DISABLE;
+
+	if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
+	{
+	/* ADC initialization Error */
+	Error_Handler();
+	}
+
+	/*##-2- Configure ADC regular channel ######################################*/
+	sConfig.Channel      = ADC_CHANNEL_10;
+	sConfig.Rank         = 1;
+	sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
+	sConfig.Offset       = 0;
+
+	if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
+	{
+	/* Channel Configuration Error */
+	Error_Handler();
+	}
+
+	/*##-3- Start the conversion process #######################################*/
+	/* Note: Considering IT occurring after each number of ADC conversions      */
+	/*       (IT by DMA end of transfer), select sampling time and ADC clock    */
+	/*       with sufficient duration to not create an overhead situation in    */
+	/*        IRQHandler. */
+	if(HAL_ADC_Start_DMA(&AdcHandle, (uint32_t*)&uhADCxConvertedValue, 1) != HAL_OK)
+	{
+	/* Start Conversation Error */
+	Error_Handler();
+	}
+
+
 	while (1)
 	{
-		debounceFSM_update();
+		//rawValue = HAL_ADC_GetValue(&myADC1Handle);
+		//printf("ADC = %u\r\n",rawValue);
+		//HAL_Delay(500);
+
+		/*debounceFSM_update();
 		if(readKey())
 		{
 			if (timeLED2 == TIME1) 	 	timeLED2 = TIME2;
 			else if(timeLED2 == TIME2) 	timeLED2 = TIME1;
 			delayWrite(&delayLED2,timeLED2);
 		}
-		if(delayRead(&delayLED2)) miToggleLed(2);
+		if(delayRead(&delayLED2)) miToggleLed(2);*/
 	}
 }
+
+
 
 
 

@@ -35,6 +35,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+extern ADC_HandleTypeDef    AdcHandle;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -138,6 +139,23 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
     HAL_IncTick();
+}
+
+/******************************************************************************/
+/*                 STM32F4xx Peripherals Interrupt Handlers                   */
+/*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
+/*  available peripheral interrupt handler's name please refer to the startup */
+/*  file (startup_stm32f4xx.s).                                               */
+/******************************************************************************/
+
+/**
+* @brief  This function handles DMA interrupt request.
+* @param  None
+* @retval None
+*/
+void ADCx_DMA_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(AdcHandle.DMA_Handle);
 }
 
 /******************************************************************************/

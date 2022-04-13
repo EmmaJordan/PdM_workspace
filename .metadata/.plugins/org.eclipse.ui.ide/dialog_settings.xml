@@ -17,6 +17,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Win10\Desktop\STM32Cube_FW_F4_V1.26.0\Projects\STM32F429ZI-Nucleo\Examples\ADC\ADC_RegularConversion_Interrupt"/>
+			<item value="C:\Users\Win10\Desktop\STM32Cube_FW_F4_V1.27.0\Projects\STM32F429ZI-Nucleo\Examples\ADC\ADC_RegularConversion_Interrupt"/>
+			<item value="C:\Users\Win10\Desktop\STM32Cube_FW_F4_V1.26.0\Projects\STM32F429ZI-Nucleo\Examples\ADC\ADC_RegularConversion_DMA"/>
 			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Adel_Arja\PdM_workspace\discoveryF072_board\discovery_practica_05"/>
 			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Adel_Arja\PdM_workspace\exercises_resolutions\practica_05"/>
 			<item value="C:\Users\Win10\Desktop\OtrasRepo_PdM\Repo_Carreno\microcontrollers_programming\poc_5"/>

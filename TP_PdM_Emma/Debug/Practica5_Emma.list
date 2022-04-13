@@ -1,5 +1,5 @@
 
-TP_final_PdM_Emma.elf:     file format elf32-littlearm
+Practica5_Emma.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_ranges 000007a0  00000000  00000000  0002c1f0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00003ca4  00000000  00000000  0002c990  2**0
+ 17 .debug_macro  00026ba5  00000000  00000000  0002c990  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000ded6  00000000  00000000  00030634  2**0
+ 18 .debug_line   0000de01  00000000  00000000  00053535  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000e3338  00000000  00000000  0003e50a  2**0
+ 19 .debug_str    000e3335  00000000  00000000  00061336  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  00121842  2**0
+ 20 .comment      00000050  00000000  00000000  0014466b  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00002808  00000000  00000000  00121894  2**2
+ 21 .debug_frame  00002808  00000000  00000000  001446bc  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:

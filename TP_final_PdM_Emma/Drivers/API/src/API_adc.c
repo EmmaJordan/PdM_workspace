@@ -7,7 +7,5 @@
 
 #include "API_adc.h"
 
-bool_t ADCinit()
-{
-	return 1;
-}
+
+

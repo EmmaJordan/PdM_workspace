@@ -21,6 +21,8 @@
 #ifndef __STM32F4xx_ADC_H
 #define __STM32F4xx_ADC_H
 
+//#define HAL_ADC_MODULE_ENABLED
+
 #ifdef __cplusplus
  extern "C" {
 #endif

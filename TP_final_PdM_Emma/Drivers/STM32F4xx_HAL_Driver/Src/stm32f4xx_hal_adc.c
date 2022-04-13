@@ -256,6 +256,7 @@
   * @brief ADC driver modules
   * @{
   */ 
+//#define HAL_ADC_MODULE_ENABLED //agregado EMMA
 
 #ifdef HAL_ADC_MODULE_ENABLED
     
