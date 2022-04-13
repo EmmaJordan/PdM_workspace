@@ -66,7 +66,8 @@ int main(void)
 	   - Set NVIC Group Priority to 4
 	   - Low Level Initialization
 	 */
-	HAL_Init();
+
+	 HAL_Init();
 
 	/* Configure the system clock to 180 MHz */
 	SystemClock_Config();

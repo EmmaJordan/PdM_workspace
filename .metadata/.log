@@ -4046,3 +4046,18 @@ java.io.FileNotFoundException: C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspa
 
 !ENTRY com.st.stm32cube.ide.mcu.debug.launch 2 0 2022-04-11 17:07:25.703
 !MESSAGE Won't launch debug session since we failed to locate the binary.
+!SESSION 2022-04-13 20:16:08.789 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-04-13 20:16:18.850
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-04-13 20:16:19.091
+!MESSAGE Log4j initialized with config file C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-04-13 20:16:38.538
+!MESSAGE Started RMI Server, listening on port 41337
