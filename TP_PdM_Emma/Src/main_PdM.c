@@ -52,9 +52,11 @@ static void Error_Handler(void);
 #define TIME1 100
 #define TIME2 500
 
+void iniciaADC();
+
 int main(void)
 {
-	 ADC_ChannelConfTypeDef sConfig;
+
 
 	/* STM32F4xx HAL library initialization:
 	   - Configure the Flash prefetch
@@ -67,7 +69,7 @@ int main(void)
 	   - Low Level Initialization
 	 */
 
-	 HAL_Init();
+	HAL_Init();
 
 	/* Configure the system clock to 180 MHz */
 	SystemClock_Config();
@@ -93,6 +95,36 @@ int main(void)
 	  - Hardware flow control disabled (RTS and CTS signals) */
 	uartinit();
 	printf("UART TP PdM Jordan OK\r\n");
+
+
+
+/* Infinite loop */
+	uint32_t valorLeidoADC = 0;
+	while (1)
+	{
+		//valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
+		HAL_ADC_Start(&AdcHandle);
+		HAL_ADC_PollForConversion(&AdcHandle,0xFFF);
+		valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
+		HAL_ADC_Stop(&AdcHandle);
+
+		printf("Valor leido = %lu\r\n", valorLeidoADC);
+		HAL_Delay(500);
+
+		/*debounceFSM_update();
+		if(readKey())
+		{
+			if (timeLED2 == TIME1) 	 	timeLED2 = TIME2;
+			else if(timeLED2 == TIME2) 	timeLED2 = TIME1;
+			delayWrite(&delayLED2,timeLED2);
+		}
+		if(delayRead(&delayLED2)) miToggleLed(2);*/
+	}
+}
+
+void iniciaADC()
+{
+	ADC_ChannelConfTypeDef sConfig;
 
 	//##-1- Configure the ADC peripheral #######################################
 	AdcHandle.Instance                   = ADCx;
@@ -142,31 +174,7 @@ int main(void)
 		//Error_Handler();
 	//}
 	//printf("HAL_ADC_Start_DMA OK\r\n");
-
-/* Infinite loop */
-	uint32_t valorLeidoADC = 0;
-	while (1)
-	{
-		//valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
-		HAL_ADC_Start(&AdcHandle);
-		HAL_ADC_PollForConversion(&AdcHandle,0xFFF);
-		valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
-		HAL_ADC_Stop(&AdcHandle);
-
-		printf("Valor leido = %lu\r\n", valorLeidoADC);
-		HAL_Delay(500);
-
-		/*debounceFSM_update();
-		if(readKey())
-		{
-			if (timeLED2 == TIME1) 	 	timeLED2 = TIME2;
-			else if(timeLED2 == TIME2) 	timeLED2 = TIME1;
-			delayWrite(&delayLED2,timeLED2);
-		}
-		if(delayRead(&delayLED2)) miToggleLed(2);*/
-	}
 }
-
 
 
 /**
