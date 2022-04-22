@@ -83,7 +83,7 @@
 	#define ADCx_CHANNEL_GPIO_PORT          GPIOA
 
 	/* Definition for ADCx's Channel */
-	#define ADCx_CHANNEL                    ADC_CHANNEL_3 //10
+	#define ADCx_CHANNEL                    ADC_CHANNEL_3
 
 	/* Definition for ADCx's DMA */
 	#define ADCx_DMA_CHANNEL                DMA_CHANNEL_0
