@@ -19,10 +19,15 @@ typedef bool bool_t;
 
 
 void debounceFSM_init();	// debe cargar el estado inicial o reiniciar en caso de error
-void debounceFSM_update();	// debe leer las entradas, resolver la lógica de transición de
+void debounceFSM_update();	// control de todas las máquinas de estado de pulsadores
+
+void debounceB1_update();	// control máquina de estados menos Tiempo
+void debounceB2_update();   // control máquina de estados mas Tiempo
+void debounceB3_update();	// debe leer las entradas, resolver la lógica de transición de
 							// estados y actualizar las salidas (llamado periódico)
-void buttonPressed();		// debe togglear el LED1
-void buttonReleased();		// debe togglear el LED3
+void buttonB1Pressed();		// boton menos Tiempo presionado
+void buttonB2Pressed();		// boton más Tiempo presionado
+void buttonB3Pressed();		// boton Disparo presionado
 
 bool_t readKey();			//lectura del botón de usuario
 //void miToggleLed(uint8_t led);

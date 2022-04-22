@@ -35,8 +35,7 @@ void iniciaADC()
 
 	if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
 	{
-		// ADC initialization Error
-		//Error_Handler();
+		printf("Error inicializacion ADC\r\n");
 	}
 
 	//printf("HAL_ADC_Init OK\r\n");
@@ -49,23 +48,18 @@ void iniciaADC()
 
 	if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
 	{
-		//Channel Configuration Error
-		//Error_Handler();
+		printf("Error configuracion ADC\r\n");
 	}
-
-	//printf("HAL_ADC_ConfigChannel OK\r\n");
 
 	//##-3- Start the conversion process #######################################
 	// Note: Considering IT occurring after each number of ADC conversions
 	//       (IT by DMA end of transfer), select sampling time and ADC clock
 	//       with sufficient duration to not create an overhead situation in
 	//        IRQHandler.
-	//if(HAL_ADC_Start_DMA(&AdcHandle, (uint32_t*)&uhADCxConvertedValue, 1) != HAL_OK)
-	//{
-		 //Start Conversation Error
-		//Error_Handler();
-	//}
-	//printf("HAL_ADC_Start_DMA OK\r\n");
+	/*if(HAL_ADC_Start_DMA(&AdcHandle, (uint32_t*)&uhADCxConvertedValue, 1) != HAL_OK)
+	{
+		printf("Error inicializacion DMA\r\n");
+	}*/
 }
 
 uint32_t myADCread()
@@ -79,18 +73,24 @@ uint32_t myADCread()
 	return valorLeidoADC;
 }
 
+#define MAXkV 115
+float fvalorADC = 0.0;
+uint16_t valorAnteriorADC=0, valorADC = 0;
 void lecturakV_Update()
 {
 	uint32_t valorLeidoADC = 0;
-	valorLeidoADC = myADCread();
-	float valor = (float) valorLeidoADC/4095.0; //Escala 0 a 1
-	if(valor<0.4)
+	valorLeidoADC = ( myADCread()+myADCread()+myADCread() ) / 3;
+	fvalorADC = (float) valorLeidoADC/4095.0; //Escala 0 a 1
+	valorADC  = fvalorADC*MAXkV; 			  //Multiplica por máxkV
+	if(valorADC>110)
 	{
-		printf("Tension de trabajo insuficiente\r\n");
+		valorADC = 110;
 	}
-	else
+	if(valorAnteriorADC != valorADC)
 	{
-		printf("Tension de trabajo = %dkV\r\n", (int) (valor*110.0));
+		if(valorADC<40)	printf("Tension de trabajo insuficiente\r\n");
+		else 			printf("Tension de trabajo = %dkV\r\n", valorADC);
 	}
+	valorAnteriorADC = valorADC;
 }
 

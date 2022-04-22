@@ -92,7 +92,12 @@ int main(void)
 	  - BaudRate    = 9600 baud
 	  - Hardware flow control disabled (RTS and CTS signals) */
 	uartinit();
-	printf("UART TP PdM Jordan OK\r\n");
+	printf("TP final PdM\r\n");
+	printf("Programacion de Microprocesadores\r\n");
+	printf("Especializacion en Sistemas Embebidos\r\n");
+	printf("Joan Emmanuel Jordan\r\n\r\n");
+
+	printf("Tiempo de disparo = 100ms\r\n");
 
 	iniciaADC();
 
@@ -101,19 +106,8 @@ int main(void)
 	while (1)
 	{
 		lecturakV_Update();
-
-
-		HAL_Delay(500);
-
 		debounceFSM_update();
-		/*if(readKey())
-		{
-			if (timeLED2 == TIME1) 	 	timeLED2 = TIME2;
-			else if(timeLED2 == TIME2) 	timeLED2 = TIME1;
-			delayWrite(&delayLED2,timeLED2);
-		}
-		if(delayRead(&delayLED2)) miToggleLed(2);*/
-
+		HAL_Delay(10);
 	}
 }
 

@@ -37,16 +37,9 @@ bool_t uartinit()
 	UartHandle.Init.OverSampling = UART_OVERSAMPLING_16;
 	if (HAL_UART_Init(&UartHandle) != HAL_OK)
 	{
-		/* Initialization Error */
-		//Error_Handler();
 		printf("Error en la inicializacion de la UART\n\r");
 		return false;
 	}
-	printf("UART inicializada correctamente\n\r");
-	printf("Parametros de configuracion:\n\r");
-	printf("Instancia: USART%d\n\r",UARTn);
-	printf("Baudrate: %d\n\r",myBaudRate);
-
 	return true;
 }
 
@@ -61,7 +54,7 @@ void uartsendString(uint8_t *pstring) {
 
 	if (ret == HAL_ERROR)
 	{
-		printf("Error de transmision de la UART");
+		printf("Error de transmision de la UART\r\n");
 	}
 }
 
@@ -77,7 +70,7 @@ void uartSendStringSize(uint8_t *pstring, uint16_t size)
 
 	if (ret == HAL_ERROR)
 	{
-		printf("Error de transmision de la UART");
+		printf("Error de transmision de la UART\r\n");
 	}
 }
 
@@ -92,7 +85,7 @@ void uartReceiveStringSize(uint8_t *pstring, uint16_t size) {
 	HAL_StatusTypeDef ret = HAL_UART_Receive(&UartHandle, pstring, size, 0xFFF);
 	if (ret == HAL_ERROR)
 	{
-		printf("Error de recepcion de mensaje de la UART");
+		printf("Error de recepcion de mensaje de la UART\r\n");
 	}
 }
 
