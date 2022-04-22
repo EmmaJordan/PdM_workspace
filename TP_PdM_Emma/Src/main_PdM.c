@@ -96,13 +96,13 @@ int main(void)
 	uartinit();
 	printf("UART TP PdM Jordan OK\r\n");
 
-
+	iniciaADC();
 
 /* Infinite loop */
 	uint32_t valorLeidoADC = 0;
 	while (1)
 	{
-		//valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
+		valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
 		HAL_ADC_Start(&AdcHandle);
 		HAL_ADC_PollForConversion(&AdcHandle,0xFFF);
 		valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
@@ -150,7 +150,7 @@ void iniciaADC()
 	printf("HAL_ADC_Init OK\r\n");
 
 	//##-2- Configure ADC regular channel ######################################
-	sConfig.Channel      = ADC_CHANNEL_10;
+	sConfig.Channel      = ADC_CHANNEL_3; //10
 	sConfig.Rank         = 1;
 	sConfig.SamplingTime = ADC_SAMPLETIME_3CYCLES;
 	sConfig.Offset       = 0;
@@ -170,7 +170,7 @@ void iniciaADC()
 	//        IRQHandler.
 	//if(HAL_ADC_Start_DMA(&AdcHandle, (uint32_t*)&uhADCxConvertedValue, 1) != HAL_OK)
 	//{
-		// Start Conversation Error
+		 //Start Conversation Error
 		//Error_Handler();
 	//}
 	//printf("HAL_ADC_Start_DMA OK\r\n");

@@ -4149,3 +4149,13 @@ Please upgrade the ST-LINK firmware using the upgrade tool. Reconnect ST-LINK an
 !MESSAGE Error in initializing ST-LINK device.
 Reason: (6) ST-LINK firmware upgrade required.
 Please upgrade the ST-LINK firmware using the upgrade tool. Reconnect ST-LINK and click OK
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 4 0 2022-04-22 11:23:46.050
+!MESSAGE Stackanalyzer failed to analyze input
+!STACK 0
+java.lang.Exception: File: C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\Debug\TP_PdM_Emma.elfdo not exists
+	at com.st.stm32cube.ide.mcu.utils.assembly.Disassembler.<init>(Disassembler.java:56)
+	at com.st.stm32cube.ide.mcu.utils.assembly.Disassembler.<init>(Disassembler.java:84)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:914)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1276)
+	at java.base/java.lang.Thread.run(Thread.java:829)
