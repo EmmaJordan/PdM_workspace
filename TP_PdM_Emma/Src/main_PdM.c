@@ -72,6 +72,9 @@ int main(void)
 	/* Initialize Inputs */
 	inputsInit();
 
+	/* Initialize Outputs */
+	outputsInit();
+
 	delay_t delayLED2;
 	tick_t  timeLED2 = 100;
 	delayInit(&delayLED2, timeLED2);
@@ -110,6 +113,14 @@ int main(void)
 			delayWrite(&delayLED2,timeLED2);
 		}
 		if(delayRead(&delayLED2)) miToggleLed(2);*/
+		if(BSP_PB_GetState(BUTTON_USER)){
+			BSP_LED_On(LED1);
+			HAL_Delay(100);
+			BSP_LED_Off(LED1);
+			HAL_Delay(100);
+		}
+		BSP_LED_Toggle(LED2);
+		BSP_LED_Toggle(LED3);
 	}
 }
 

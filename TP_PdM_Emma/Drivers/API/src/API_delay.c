@@ -83,6 +83,23 @@ int miLD3bis = 14;
 // Función: Inicialización de los leds de mi placa (diferente a Nucleo)
 void inputsInit()
 {
+	/* Initialize BSP PB for BUTTON_USER */
+	BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
+}
+
+void outputsInit()
+{
+	/* Initialize BSP Led for LED1 */
+	BSP_LED_Init(LED1);
+	/* Initialize BSP Led for LED2 */
+	BSP_LED_Init(LED2);
+	/* Initialize BSP Led for LED1 */
+	BSP_LED_Init(LED3);
+}
+
+/*
+ void inputsInit()
+{
 	RCC->AHB1ENR |= (1<<0); //Habilita puerto A <-- para user Button PA0 (EMMA)
 	RCC->AHB1ENR |= (1<<1); //Habilita puerto B <-- para leds externos
 	RCC->AHB1ENR |= (1<<2); //Habilita puerto C <-- para user Button PC13 (CESE)
@@ -126,6 +143,6 @@ void inputsInit()
 	GPIOB->OSPEEDR &=~ (3<<miLD3bis*2);
 	GPIOB->PUPDR   &=~ (3<<miLD3bis*2);
 }
-
+ * */
 
 
