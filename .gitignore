@@ -1,6 +1,9 @@
 #eclipse
 .metadata
 
+#stm32cubeide
+.metadata
+
 # Prerequisites
 *.d
 
