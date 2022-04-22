@@ -21,7 +21,7 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
-//#define PLACA_NUCLEO
+#define PLACA_NUCLEO
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
 #include "stm32f4xx_hal.h"

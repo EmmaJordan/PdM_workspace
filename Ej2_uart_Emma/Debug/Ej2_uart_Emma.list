@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_ranges 00000710  00000000  00000000  0002b138  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00025f72  00000000  00000000  0002b848  2**0
+ 17 .debug_macro  00025f7f  00000000  00000000  0002b848  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0000b730  00000000  00000000  000517ba  2**0
+ 18 .debug_line   0000b730  00000000  00000000  000517c7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000e2f40  00000000  00000000  0005ceea  2**0
+ 19 .debug_str    000e2f4d  00000000  00000000  0005cef7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  0013fe2a  2**0
+ 20 .comment      00000050  00000000  00000000  0013fe44  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  0000259c  00000000  00000000  0013fe7c  2**2
+ 21 .debug_frame  0000259c  00000000  00000000  0013fe94  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -2181,11 +2181,11 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
  8000f64:	4b23      	ldr	r3, [pc, #140]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
  8000f66:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  8000f68:	4a22      	ldr	r2, [pc, #136]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
- 8000f6a:	f043 0301 	orr.w	r3, r3, #1
+ 8000f6a:	f043 0308 	orr.w	r3, r3, #8
  8000f6e:	6313      	str	r3, [r2, #48]	; 0x30
  8000f70:	4b20      	ldr	r3, [pc, #128]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
  8000f72:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 8000f74:	f003 0301 	and.w	r3, r3, #1
+ 8000f74:	f003 0308 	and.w	r3, r3, #8
  8000f78:	613b      	str	r3, [r7, #16]
  8000f7a:	693b      	ldr	r3, [r7, #16]
   USARTx_RX_GPIO_CLK_ENABLE();
@@ -2194,11 +2194,11 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
  8000f80:	4b1c      	ldr	r3, [pc, #112]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
  8000f82:	6b1b      	ldr	r3, [r3, #48]	; 0x30
  8000f84:	4a1b      	ldr	r2, [pc, #108]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
- 8000f86:	f043 0301 	orr.w	r3, r3, #1
+ 8000f86:	f043 0308 	orr.w	r3, r3, #8
  8000f8a:	6313      	str	r3, [r2, #48]	; 0x30
  8000f8c:	4b19      	ldr	r3, [pc, #100]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
  8000f8e:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 8000f90:	f003 0301 	and.w	r3, r3, #1
+ 8000f90:	f003 0308 	and.w	r3, r3, #8
  8000f94:	60fb      	str	r3, [r7, #12]
  8000f96:	68fb      	ldr	r3, [r7, #12]
 
@@ -2208,20 +2208,20 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
  8000f98:	2300      	movs	r3, #0
  8000f9a:	60bb      	str	r3, [r7, #8]
  8000f9c:	4b15      	ldr	r3, [pc, #84]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
- 8000f9e:	6c5b      	ldr	r3, [r3, #68]	; 0x44
+ 8000f9e:	6c1b      	ldr	r3, [r3, #64]	; 0x40
  8000fa0:	4a14      	ldr	r2, [pc, #80]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
- 8000fa2:	f043 0310 	orr.w	r3, r3, #16
- 8000fa6:	6453      	str	r3, [r2, #68]	; 0x44
+ 8000fa2:	f443 2380 	orr.w	r3, r3, #262144	; 0x40000
+ 8000fa6:	6413      	str	r3, [r2, #64]	; 0x40
  8000fa8:	4b12      	ldr	r3, [pc, #72]	; (8000ff4 <HAL_UART_MspInit+0x9c>)
- 8000faa:	6c5b      	ldr	r3, [r3, #68]	; 0x44
- 8000fac:	f003 0310 	and.w	r3, r3, #16
+ 8000faa:	6c1b      	ldr	r3, [r3, #64]	; 0x40
+ 8000fac:	f403 2380 	and.w	r3, r3, #262144	; 0x40000
  8000fb0:	60bb      	str	r3, [r7, #8]
  8000fb2:	68bb      	ldr	r3, [r7, #8]
 
   /*##-2- Configure peripheral GPIO ##########################################*/
   /* UART TX GPIO pin configuration  */
   GPIO_InitStruct.Pin       = USARTx_TX_PIN;
- 8000fb4:	f44f 7300 	mov.w	r3, #512	; 0x200
+ 8000fb4:	f44f 7380 	mov.w	r3, #256	; 0x100
  8000fb8:	617b      	str	r3, [r7, #20]
   GPIO_InitStruct.Mode      = GPIO_MODE_AF_PP;
  8000fba:	2302      	movs	r3, #2
@@ -2244,7 +2244,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
 
   /* UART RX GPIO pin configuration  */
   GPIO_InitStruct.Pin = USARTx_RX_PIN;
- 8000fd6:	f44f 6380 	mov.w	r3, #1024	; 0x400
+ 8000fd6:	f44f 7300 	mov.w	r3, #512	; 0x200
  8000fda:	617b      	str	r3, [r7, #20]
   GPIO_InitStruct.Alternate = USARTx_RX_AF;
  8000fdc:	2307      	movs	r3, #7
@@ -2261,7 +2261,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef *huart)
  8000ff0:	46bd      	mov	sp, r7
  8000ff2:	bd80      	pop	{r7, pc}
  8000ff4:	40023800 	.word	0x40023800
- 8000ff8:	40020000 	.word	0x40020000
+ 8000ff8:	40020c00 	.word	0x40020c00
 
 08000ffc <HAL_MspInit>:
   * @note   This function is called from HAL_Init() function to perform system
@@ -4957,6 +4957,7 @@ int main(void)
   HAL_Init();
  8002166:	f7fe fba1 	bl	80008ac <HAL_Init>
 
+
   /* Configure the system clock to 180 MHz */
   SystemClock_Config();
  800216a:	f000 f85b 	bl	8002224 <SystemClock_Config>
@@ -5048,7 +5049,7 @@ int main(void)
 	  BSP_LED_Toggle(LED2);
  80021ea:	e7f0      	b.n	80021ce <main+0x6e>
  80021ec:	200000a0 	.word	0x200000a0
- 80021f0:	40011000 	.word	0x40011000
+ 80021f0:	40004800 	.word	0x40004800
  80021f4:	080032e0 	.word	0x080032e0
  80021f8:	08003330 	.word	0x08003330
  80021fc:	08003358 	.word	0x08003358

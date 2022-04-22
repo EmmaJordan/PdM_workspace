@@ -68,6 +68,7 @@ int main(void)
      */
   HAL_Init();
 
+
   /* Configure the system clock to 180 MHz */
   SystemClock_Config();
 
