@@ -8,9 +8,10 @@
 #include "API_delay.h"
 #include "API_debounce.h"
 
-//#define BUTTON_PRESSED  (GPIOA->IDR & (1<<0) ) //EMMA
-#define BUTTON_PRESSED  (GPIOC->IDR & (1<<13) ) //CESE
 
+#define BUTTON_Disparo_PRESSED  	(GPIOC->IDR & (1<<13) )  //CESE
+#define BUTTON_menosTiempo_PRESSED  (GPIOG->IDR & (1<<0)  )  //-Tiempo
+#define BUTTON_masTiempo_PRESSED  	(GPIOG->IDR & (1<<1)  )  //+Tiempo
 //Privada
 typedef enum{
 	BUTTON_UP,
@@ -29,7 +30,7 @@ static bool_t PrivateGlobalVariable;
 //Salida: ninguna
 void buttonPressed()
 {
-	miToggleLed(1);
+	//BSP_LED_Toggle(LED1);
 	printf("Flanco de subida detectado\r\n");
 }
 
@@ -38,7 +39,7 @@ void buttonPressed()
 //Salida: ninguna
 void buttonReleased()
 {
-	miToggleLed(3);
+	//BSP_LED_Toggle(LED3);
 	printf("Flanco de bajada detectado\r\n");
 }
 
@@ -51,11 +52,23 @@ void buttonReleased()
 static bool_t flancoDescendente = 0;
 void debounceFSM_update()
 {
-	switch (actualState)
+	if ( BUTTON_menosTiempo_PRESSED )
+	{
+		BSP_LED_Toggle(LED1);
+	}
+	if ( BUTTON_masTiempo_PRESSED )
+	{
+		BSP_LED_Toggle(LED2);
+	}
+	if ( BUTTON_Disparo_PRESSED )
+	{
+		BSP_LED_Toggle(LED3);
+	}
+	/*switch (actualState)
 	{
 		case BUTTON_UP:
 
-					if ( BUTTON_PRESSED )
+					if ( BUTTON_Disparo_PRESSED )
 					{
 						actualState = BUTTON_FALLING;
 					}
@@ -65,7 +78,7 @@ void debounceFSM_update()
 
 					if( delayRead(&delayAntiRebote) )
 					{
-						if ( BUTTON_PRESSED )
+						if ( BUTTON_Disparo_PRESSED )
 						{
 							buttonPressed();
 							flancoDescendente = 1;
@@ -80,7 +93,7 @@ void debounceFSM_update()
 
 		case BUTTON_DOWN:
 
-					if ( !BUTTON_PRESSED )
+					if ( !BUTTON_Disparo_PRESSED )
 					{
 						actualState = BUTTON_RAISING;
 					}
@@ -90,7 +103,7 @@ void debounceFSM_update()
 
 					if( delayRead(&delayAntiRebote) )
 					{
-						if ( !BUTTON_PRESSED )
+						if ( !BUTTON_Disparo_PRESSED )
 						{
 							buttonReleased();
 							actualState = BUTTON_UP;
@@ -103,7 +116,7 @@ void debounceFSM_update()
 					break;
 		default:
 					break;
-	}
+	}*/
 }
 
 //Función: carga el estado inicial
@@ -145,7 +158,7 @@ uint8_t ON_3 = 0;
 // Entrada: Número de led
 // Salida: Ninguna
 // Función: Cambio de estado de led de entrada
-void miToggleLed(uint8_t led)
+/*void miToggleLed(uint8_t led)
 {
 	if (led == 1)
 	{
@@ -188,5 +201,5 @@ void miToggleLed(uint8_t led)
 			GPIOB->BSRR |= (1<<(16+miLed3bis));
 		}
 	}
-}
+}*/
 

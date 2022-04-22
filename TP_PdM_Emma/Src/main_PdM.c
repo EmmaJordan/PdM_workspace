@@ -105,22 +105,15 @@ int main(void)
 		printf("Valor leido = %lu\r\n", valorLeidoADC);
 		HAL_Delay(500);
 
-		/*debounceFSM_update();
-		if(readKey())
+		debounceFSM_update();
+		/*if(readKey())
 		{
 			if (timeLED2 == TIME1) 	 	timeLED2 = TIME2;
 			else if(timeLED2 == TIME2) 	timeLED2 = TIME1;
 			delayWrite(&delayLED2,timeLED2);
 		}
 		if(delayRead(&delayLED2)) miToggleLed(2);*/
-		if(BSP_PB_GetState(BUTTON_USER)){
-			BSP_LED_On(LED1);
-			HAL_Delay(100);
-			BSP_LED_Off(LED1);
-			HAL_Delay(100);
-		}
-		BSP_LED_Toggle(LED2);
-		BSP_LED_Toggle(LED3);
+
 	}
 }
 

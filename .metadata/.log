@@ -4159,3 +4159,13 @@ java.lang.Exception: File: C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\T
 	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:914)
 	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1276)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+
+!ENTRY com.st.stm32cube.ide.mcu.stackanalyzer 4 0 2022-04-22 14:22:45.672
+!MESSAGE Stackanalyzer failed to analyze input
+!STACK 0
+java.lang.Exception: File: C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\Debug\TP_PdM_Emma.elfdo not exists
+	at com.st.stm32cube.ide.mcu.utils.assembly.Disassembler.<init>(Disassembler.java:56)
+	at com.st.stm32cube.ide.mcu.utils.assembly.Disassembler.<init>(Disassembler.java:84)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.inputChanged(StackAnalyzerView.java:914)
+	at com.st.stm32cube.ide.mcu.stackanalyzer.ui.StackAnalyzerView.lambda$16(StackAnalyzerView.java:1276)
+	at java.base/java.lang.Thread.run(Thread.java:829)

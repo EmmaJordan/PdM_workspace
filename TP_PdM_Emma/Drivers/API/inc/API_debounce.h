@@ -25,6 +25,6 @@ void buttonPressed();		// debe togglear el LED1
 void buttonReleased();		// debe togglear el LED3
 
 bool_t readKey();			//lectura del botón de usuario
-void miToggleLed(uint8_t led);
+//void miToggleLed(uint8_t led);
 
 #endif /* API_INC_API_DEBOUNCE_H_ */

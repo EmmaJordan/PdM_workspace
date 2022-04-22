@@ -85,6 +85,19 @@ void inputsInit()
 {
 	/* Initialize BSP PB for BUTTON_USER */
 	BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
+
+	/* Initialize Button for -Time & +Time */
+	RCC->AHB1ENR |= (1<<6); //Habilita puerto G
+
+	//PG0 -Time
+	GPIOG->MODER &=~ (3<<0);   			//00 --> entrada
+	GPIOG->PUPDR &=~ (1<<0);			//10 --> pull down
+	GPIOG->PUPDR |=  (1<<1);
+
+	//PG1 +Time
+	GPIOG->MODER &=~ (3<<2);   			//00 --> entrada
+	GPIOG->PUPDR &=~ (1<<2);			//10 --> pull down
+	GPIOG->PUPDR |=  (1<<3);
 }
 
 void outputsInit()
