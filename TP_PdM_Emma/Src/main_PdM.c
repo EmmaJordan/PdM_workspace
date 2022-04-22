@@ -97,12 +97,12 @@ int main(void)
 	iniciaADC();
 
 /* Infinite loop */
-	uint32_t valorLeidoADC = 0;
+
 	while (1)
 	{
-		valorLeidoADC = myADCread();
+		lecturakV_Update();
 
-		printf("Valor leido = %lu\r\n", valorLeidoADC);
+
 		HAL_Delay(500);
 
 		debounceFSM_update();

@@ -78,3 +78,19 @@ uint32_t myADCread()
 	HAL_ADC_Stop(&AdcHandle);
 	return valorLeidoADC;
 }
+
+void lecturakV_Update()
+{
+	uint32_t valorLeidoADC = 0;
+	valorLeidoADC = myADCread();
+	float valor = (float) valorLeidoADC/4095.0; //Escala 0 a 1
+	if(valor<0.4)
+	{
+		printf("Tension de trabajo insuficiente\r\n");
+	}
+	else
+	{
+		printf("Tension de trabajo = %dkV\r\n", (int) (valor*110.0));
+	}
+}
+

@@ -17,5 +17,6 @@
 
 void iniciaADC();
 uint32_t myADCread();
+void lecturakV_Update();
 
 #endif /* API_INC_API_ADC_H_ */
