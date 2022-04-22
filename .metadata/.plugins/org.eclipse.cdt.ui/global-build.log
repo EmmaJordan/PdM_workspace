@@ -1,14 +1,28 @@
-20:20:08 **** Incremental Build of configuration Debug for project TP_PdM_Emma ****
+10:07:54 **** Build of configuration Debug for project Ej0_blinky ****
 make -j4 all 
-arm-none-eabi-gcc "../Src/main_PdM.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/STM32F4xx_HAL_Driver" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/STM32F4xx_HAL_Driver/Src" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/CMSIS/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/BSP/STM32F4xx_Nucleo_144" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/API/inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/Core/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/TP_PdM_Emma/Drivers/API" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main_PdM.d" -MT"Src/main_PdM.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main_PdM.o"
-arm-none-eabi-gcc -o "TP_PdM_Emma.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP_PdM_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: TP_PdM_Emma.elf
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F429ZITx -DSTM32F4 -DNUCLEO_F429ZI -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Inc -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Ej0_blinky/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Ej0_blinky/Drivers/CMSIS/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Ej0_blinky/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Ej0_blinky/Drivers/BSP/STM32F4xx_Nucleo_144" -I"C:/Users/Win10/Desktop/RepoPdM_Jordan/PdM_workspace/Ej0_blinky/Drivers/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Ej0_blinky.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\Ej0_blinky\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Ej0_blinky.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Ej0_blinky.elf
  
-arm-none-eabi-size   TP_PdM_Emma.elf 
-arm-none-eabi-objdump -h -S  TP_PdM_Emma.elf  > "TP_PdM_Emma.list"
+arm-none-eabi-size   Ej0_blinky.elf 
+arm-none-eabi-objdump -h -S  Ej0_blinky.elf  > "Ej0_blinky.list"
    text	   data	    bss	    dec	    hex	filename
-  16152	    148	   1748	  18048	   4680	TP_PdM_Emma.elf
+   6344	     32	   1568	   7944	   1f08	Ej0_blinky.elf
 Finished building: default.size.stdout
  
-Finished building: TP_PdM_Emma.list
+Finished building: Ej0_blinky.list
+ 
+10:09:03 **** Incremental Build of configuration Debug for project Ej0_blinky ****
+make -j4 all 
+arm-none-eabi-size   Ej0_blinky.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6344	     32	   1568	   7944	   1f08	Ej0_blinky.elf
+Finished building: default.size.stdout
+ 
+10:10:40 **** Incremental Build of configuration Debug for project Ej0_blinky ****
+make -j4 all 
+arm-none-eabi-size   Ej0_blinky.elf 
+   text	   data	    bss	    dec	    hex	filename
+   6344	     32	   1568	   7944	   1f08	Ej0_blinky.elf
+Finished building: default.size.stdout
  
