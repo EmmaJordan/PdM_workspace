@@ -69,15 +69,7 @@ int main(void)
 	/* Initialize FSM */
 	debounceFSM_init();
 
-	/*##-1- Configure the UART peripheral ######################################*/
-	/* Put the USART peripheral in the Asynchronous mode (UART Mode) */
-	/* UART configured as follows:
-	  - Word Length = 8 Bits (7 data bit + 1 parity bit) :
-					  BE CAREFUL : Program 7 data bits + 1 parity bit in PC HyperTerminal
-	  - Stop Bit    = One Stop bit
-	  - Parity      = ODD parity
-	  - BaudRate    = 9600 baud
-	  - Hardware flow control disabled (RTS and CTS signals) */
+	/* Initialize UART*/
 	myUART_init();
 
 	/* Initialize ADC */

@@ -8,6 +8,16 @@
 
 #include "API_adc.h"
 
+#define MIN_LINEA 		200
+#define MAX_LINEA 		240
+#define AMPLITUD_LINEA 	250
+#define ADC_RESOLUTION 	4095.0
+
+static uint32_t lecturaADC = 0;
+static uint8_t 	valorAnteriorADC =0;
+static uint8_t 	valorADC = 0;
+static bool_t error = 0;
+
 /* ADC handler declaration */
 ADC_HandleTypeDef    AdcHandle;
 
@@ -81,14 +91,7 @@ static uint32_t myADC_read()
 	return valorLeidoADC;
 }
 
-#define MIN_LINEA 		200
-#define MAX_LINEA 		240
-#define AMPLITUD_LINEA 	250
-#define ADC_RESOLUTION 	4095.0
-static uint32_t lecturaADC = 0;
-static uint8_t 	valorAnteriorADC =0;
-static uint8_t 	valorADC = 0;
-static bool_t error = 0;
+
 /*	Función: actualización de lectura AD para mostrar Línea por terminal (muestra variaciones +-2)
 	Entrada: ninguna
 	Salida: error (0:ok, 1:bloqueo por problema de Línea)
@@ -99,9 +102,13 @@ bool_t myADC_update()
 	valorADC   = ((float)lecturaADC/ADC_RESOLUTION)*AMPLITUD_LINEA;	//Escala Linea
 
 	if( (valorAnteriorADC <= valorADC-2) || (valorAnteriorADC >= valorADC+2) )
-	//if( valorAnteriorADC != valorADC )
 	{
-		if(valorADC<MIN_LINEA)
+		if(AMPLITUD_LINEA == valorADC)
+		{
+			printf("Peligro, sobretension!\r\n");
+			error = 1;
+		}
+		else if(valorADC<MIN_LINEA)
 		{
 			printf("Tension de alimentacion insuficiente!\r\n");
 			error = 1;
@@ -118,7 +125,6 @@ bool_t myADC_update()
 		}
 		valorAnteriorADC = valorADC; //Evita escrituras sucesivas iguales (+-2)
 	}
-
 	return error;
 }
 
