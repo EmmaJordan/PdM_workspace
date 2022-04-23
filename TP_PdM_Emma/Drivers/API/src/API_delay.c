@@ -71,13 +71,6 @@ tick_t delayGetDuration( delay_t * delay )
 	return delay->duration;
 }
 
-
-int miLD1 = 0;
-int miLD2 = 7;
-int miLD2bis = 13;
-int miLD3 = 1;
-int miLD3bis = 14;
-
 // Entrada: Ninguna
 // Salida: Ninguna
 // Función: Inicialización de los leds de mi placa (diferente a Nucleo)
@@ -100,6 +93,7 @@ void inputsInit()
 	GPIOG->PUPDR |=  (1<<3);
 }
 
+#define pinBuzzer 2
 void outputsInit()
 {
 	/* Initialize BSP Led for LED1 */
@@ -108,54 +102,13 @@ void outputsInit()
 	BSP_LED_Init(LED2);
 	/* Initialize BSP Led for LED1 */
 	BSP_LED_Init(LED3);
+	/* Initialize Buzzer */
+	RCC->AHB1ENR   |=  (1<<4); //Habilita puerto E <-- para PE2 (buzzer)
+	GPIOE->MODER   &=~ (1<<(pinBuzzer*2+1));
+	GPIOE->MODER   |=  (1<<pinBuzzer*2);
+	GPIOE->OTYPER  &=~ (1<<pinBuzzer);
+	GPIOE->OSPEEDR &=~ (3<<pinBuzzer*3);
+	GPIOE->PUPDR   &=~ (3<<pinBuzzer*3);
 }
-
-/*
- void inputsInit()
-{
-	RCC->AHB1ENR |= (1<<0); //Habilita puerto A <-- para user Button PA0 (EMMA)
-	RCC->AHB1ENR |= (1<<1); //Habilita puerto B <-- para leds externos
-	RCC->AHB1ENR |= (1<<2); //Habilita puerto C <-- para user Button PC13 (CESE)
-	RCC->AHB1ENR |= (1<<6); //Habilita puerto G <-- para leds 3 y 4 (PG13 y PG14)
-
-	GPIOA->MODER   &=~ (3<<0);   			//00 --> entrada
-	GPIOA->PUPDR   &=~ (1<<0);				//10 --> pull down
-	GPIOA->PUPDR   |=  (1<<1);
-
-	GPIOC->MODER   &=~ (3<<0);   			//00 --> entrada
-	GPIOC->PUPDR   &=~ (1<<0);				//10 --> pull down
-	GPIOC->PUPDR   |=  (1<<1);
-
-	GPIOB->MODER   &=~ (1<<(miLD1*2+1));
-	GPIOB->MODER   |=  (1<<miLD1*2);
-	GPIOB->OTYPER  &=~ (1<<miLD1);
-	GPIOB->OSPEEDR &=~ (3<<miLD1*3);
-	GPIOB->PUPDR   &=~ (3<<miLD1*3);
-
-	GPIOB->MODER   &=~ (1<<(miLD2*2+1));
-	GPIOB->MODER   |=  (1<<miLD2*2);
-	GPIOB->OTYPER  &=~ (1<<miLD2);
-	GPIOB->OSPEEDR &=~ (3<<miLD2*2);
-	GPIOB->PUPDR   &=~ (3<<miLD2*2);
-
-	GPIOG->MODER   &=~ (1<<(miLD2bis*2+1));
-	GPIOG->MODER   |=  (1<<miLD2bis*2);
-	GPIOG->OTYPER  &=~ (1<<miLD2bis);
-	GPIOG->OSPEEDR &=~ (3<<miLD2bis*2);
-	GPIOG->PUPDR   &=~ (3<<miLD2bis*2);
-
-	GPIOB->MODER   &=~ (1<<(miLD3*2+1));
-	GPIOB->MODER   |=  (1<<miLD3*2);
-	GPIOB->OTYPER  &=~ (1<<miLD3);
-	GPIOB->OSPEEDR &=~ (3<<miLD3*2);
-	GPIOB->PUPDR   &=~ (3<<miLD3*2);
-
-	GPIOB->MODER   &=~ (1<<(miLD3bis*2+1));
-	GPIOB->MODER   |=  (1<<miLD3bis*2);
-	GPIOB->OTYPER  &=~ (1<<miLD3bis);
-	GPIOB->OSPEEDR &=~ (3<<miLD3bis*2);
-	GPIOB->PUPDR   &=~ (3<<miLD3bis*2);
-}
- * */
 
 

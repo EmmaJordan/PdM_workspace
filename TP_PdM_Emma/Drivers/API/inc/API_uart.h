@@ -14,6 +14,8 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_nucleo_144.h"
 
+#define myBaudRate 9600
+
 typedef bool bool_t;
 
 /**
@@ -24,7 +26,7 @@ typedef bool bool_t;
  * - COM usado
  * - baud rate
  */
-bool_t uartinit();
+bool_t myUART_init();
 
 /**
  * Envia un mensaje por la UART configurada

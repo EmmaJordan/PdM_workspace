@@ -13,10 +13,11 @@
 #include <string.h>
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_nucleo_144.h"
-#include <stm32f4xx_hal_adc.h>		//agregado Emma
+#include <stm32f4xx_hal_adc.h>
 
-void iniciaADC();
-uint32_t myADCread();
-void lecturakV_Update();
+typedef bool bool_t;
+
+void myADC_init();
+bool_t myADC_update();
 
 #endif /* API_INC_API_ADC_H_ */

@@ -41,18 +41,15 @@ static void Error_Handler(void);
   * @param  None
   * @retval None
   */
-#define Led_1    0
-#define Led_2    7
-#define Led_3 	 1
-#define Led_3bis 14
 
-#define TIME1 100
-#define TIME2 500
+uint16_t tiempoDisparo; //variable pública Tiempo de emisión de Rx
+
+void decreaseTime();
+void increaseTime();
+void applyRx();
 
 int main(void)
 {
-
-
 	/* STM32F4xx HAL library initialization:
 	   - Configure the Flash prefetch
 	   - Systick timer is configured by default as source of time base, but user
@@ -63,7 +60,6 @@ int main(void)
 	   - Set NVIC Group Priority to 4
 	   - Low Level Initialization
 	 */
-
 	HAL_Init();
 
 	/* Configure the system clock to 180 MHz */
@@ -74,10 +70,6 @@ int main(void)
 
 	/* Initialize Outputs */
 	outputsInit();
-
-	delay_t delayLED2;
-	tick_t  timeLED2 = 100;
-	delayInit(&delayLED2, timeLED2);
 
 	/* Initialize FSM */
 	debounceFSM_init();
@@ -91,27 +83,109 @@ int main(void)
 	  - Parity      = ODD parity
 	  - BaudRate    = 9600 baud
 	  - Hardware flow control disabled (RTS and CTS signals) */
-	uartinit();
-	printf("TP final PdM\r\n");
-	printf("Programacion de Microprocesadores\r\n");
-	printf("Especializacion en Sistemas Embebidos\r\n");
-	printf("Joan Emmanuel Jordan\r\n\r\n");
+	myUART_init();
 
-	printf("Tiempo de disparo = 100ms\r\n");
+	/* Initialize ADC */
+	myADC_init();
 
-	iniciaADC();
+	/* Infinite loop */
+	bool_t error;
+	uint8_t state = 0;
+	typedef enum{
+		s_rest,
+		s_decreaseTime,
+		s_increaseTime,
+		s_alarm,
+		s_Rx,
+	} debounceState_t;
 
-/* Infinite loop */
-
+	debounceState_t mainState = s_rest;
 	while (1)
 	{
-		lecturakV_Update();
-		debounceFSM_update();
+		switch (mainState)
+		{
+			case s_rest:
+
+					error = myADC_update();
+					if(error==0)
+					{
+						state = debounceFSM_update();
+						if(state==0) 		mainState = s_rest;
+						else if(state==1) 	mainState = s_decreaseTime;
+						else if(state==2)	mainState = s_increaseTime;
+						else if(state==3)   mainState = s_Rx;
+					}
+					else mainState = s_alarm;
+					break;
+
+			case s_decreaseTime:
+
+					decreaseTime();
+					mainState = s_rest;
+					break;
+
+			case s_increaseTime:
+
+					increaseTime();
+					mainState = s_rest;
+					break;
+
+			case s_alarm:
+
+					error = myADC_update();
+					if(error==0) mainState = s_rest;
+					break;
+
+			case s_Rx:
+
+					applyRx();
+					mainState = s_rest;
+					break;
+		}
+
 		HAL_Delay(10);
 	}
 }
 
+//Función: disminuye tiempo de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void decreaseTime()
+{
+	BSP_LED_On(LED1);
+	if(tiempoDisparo>100) tiempoDisparo = tiempoDisparo-100;
+	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
+	while(BUTTON_menosTiempo_PRESSED);
+	BSP_LED_Off(LED1);
+	HAL_Delay(100);
+}
 
+//Función: aumenta tiempo de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void increaseTime()
+{
+	BSP_LED_On(LED2);
+	if(tiempoDisparo<3000) tiempoDisparo = tiempoDisparo+100;
+	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
+	while(BUTTON_masTiempo_PRESSED);
+	BSP_LED_Off(LED2);
+	HAL_Delay(100);
+}
+
+//Función: ejecucion de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void applyRx()
+{
+	printf("Disparo ON\r\n");
+	BSP_LED_On(LED3);
+	HAL_Delay(tiempoDisparo);
+	BSP_LED_Off(LED3);
+	printf("Disparo OFF\r\n");
+	while(BSP_PB_GetState(BUTTON_USER)); //espera a que suelte disparo
+	HAL_Delay(200);
+}
 
 /**
   * @brief  System Clock Configuration

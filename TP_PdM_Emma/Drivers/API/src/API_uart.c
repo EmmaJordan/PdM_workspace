@@ -22,10 +22,9 @@ UART_HandleTypeDef UartHandle;
  	 Función: inicialización de la UART
  	 Entradas: ninguna
  	 Salida: booleando TRUE si se inicializó correctamente, FALSE si falló
+ 	 Es pública porque se llama desde fuera del módulo (main)
 */
-#define myBaudRate 9600
-#define UARTn 3
-bool_t uartinit()
+bool_t myUART_init()
 {
 	UartHandle.Instance        = USART3; //uart 1 para placa discovery
 	UartHandle.Init.BaudRate   = myBaudRate;
@@ -40,6 +39,11 @@ bool_t uartinit()
 		printf("Error en la inicializacion de la UART\n\r");
 		return false;
 	}
+	printf("TP final PdM\r\n");
+	printf("Programacion de Microcontroladores\r\n");
+	printf("Carrera de Especializacion en Sistemas Embebidos\r\n");
+	printf("Joan Emmanuel Jordan\r\n\r\n");
+	printf("Tiempo de disparo = 100ms\r\n");
 	return true;
 }
 

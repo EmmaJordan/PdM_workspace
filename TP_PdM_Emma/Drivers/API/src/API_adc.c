@@ -14,7 +14,11 @@ ADC_HandleTypeDef    AdcHandle;
 /* Variable used to get converted value */
 __IO uint16_t uhADCxConvertedValue = 0;
 
-void iniciaADC()
+/*	Función: inicialización de conversor AD en un canal (A0 de placa Nucleo)
+	Entrada: ninguna
+	Salida: ninguna
+	Nota: es una función pública porque se llama desde fuera del módulo (main) */
+void myADC_init()
 {
 	ADC_ChannelConfTypeDef sConfig;
 
@@ -38,7 +42,6 @@ void iniciaADC()
 		printf("Error inicializacion ADC\r\n");
 	}
 
-	//printf("HAL_ADC_Init OK\r\n");
 
 	//##-2- Configure ADC regular channel ######################################
 	sConfig.Channel      = ADC_CHANNEL_3;
@@ -62,7 +65,12 @@ void iniciaADC()
 	}*/
 }
 
-uint32_t myADCread()
+/*	Función: lectura del canal de ADC elegido en myADC_init(), en modo polling
+ 	siguiendo ejemplo ADC_RegularConversion_DMA de STM32Cube_FW_F4_V1.27.0
+	Entrada: ninguna
+	Salida: ninguna
+	Nota: es una función pública porque se llama desde fuera del módulo (main) */
+static uint32_t myADC_read()
 {
 	uint32_t valorLeidoADC;
 	valorLeidoADC = HAL_ADC_GetValue(&AdcHandle);
@@ -73,24 +81,42 @@ uint32_t myADCread()
 	return valorLeidoADC;
 }
 
-#define MAXkV 115
-float fvalorADC = 0.0;
-uint16_t valorAnteriorADC=0, valorADC = 0;
-void lecturakV_Update()
+#define MIN_LINEA 		200
+#define MAX_LINEA 		240
+#define AMPLITUD_LINEA 	250
+#define ADC_RESOLUTION 	4095.0
+static uint32_t lecturaADC = 0;
+static uint8_t 	valorAnteriorADC =0;
+static uint8_t 	valorADC = 0;
+static bool_t error = 0;
+/*	Función: actualización de lectura AD para mostrar Línea por terminal
+	Entrada: ninguna
+	Salida: error (0:ok, 1:bloqueo por problema de Línea)
+	Nota: es una función privada porque se llama internamente en API_adc */
+bool_t myADC_update()
 {
-	uint32_t valorLeidoADC = 0;
-	valorLeidoADC = ( myADCread()+myADCread()+myADCread() ) / 3;
-	fvalorADC = (float) valorLeidoADC/4095.0; //Escala 0 a 1
-	valorADC  = fvalorADC*MAXkV; 			  //Multiplica por máxkV
-	if(valorADC>110)
-	{
-		valorADC = 110;
-	}
+	lecturaADC = ( myADC_read()+myADC_read()+myADC_read() ) / 3; 	//Promedio de 3 lecturas para disminuir oscilación
+	valorADC   = ((float)lecturaADC/ADC_RESOLUTION)*AMPLITUD_LINEA;	//Escala Linea
+
 	if(valorAnteriorADC != valorADC)
 	{
-		if(valorADC<40)	printf("Tension de trabajo insuficiente\r\n");
-		else 			printf("Tension de trabajo = %dkV\r\n", valorADC);
+		if(valorADC<MIN_LINEA)
+		{
+			printf("Tension de alimentacion insuficiente!\r\n");
+			error = 1;
+		}
+		else if(valorADC>MAX_LINEA)
+		{
+			printf("Tension de alimentacion excedida!\r\n");
+			error = 1;
+		}
+		else
+		{
+			printf("Linea = %dVca\r\n", valorADC);
+			error = 0;
+		}
 	}
-	valorAnteriorADC = valorADC;
+	valorAnteriorADC = valorADC; //Guarda valor anterior para evitar escrituras sucesivas iguales
+	return error;
 }
 
