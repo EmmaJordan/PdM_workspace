@@ -27,7 +27,18 @@
 #include <stdio.h>
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx_nucleo_144.h"
-#include <stm32f4xx_hal_adc.h>		//agregado Emma
+#include <stm32f4xx_hal_adc.h>
+
+typedef enum{
+	s_rest,
+	s_decreaseTime,
+	s_increaseTime,
+	s_alarm,
+	s_Rx,
+} debounceState_t;
+
+
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* User can use this section to tailor USARTx/UARTx instance used and associated
@@ -116,7 +127,8 @@
 	#define ADCx_DMA_IRQn                   DMA2_Stream0_IRQn
 	#define ADCx_DMA_IRQHandler             DMA2_Stream0_IRQHandler
 #endif
-void inputsInit();
+
+
 
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */

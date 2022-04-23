@@ -29,6 +29,10 @@ void buttonB1Pressed();		// boton menos Tiempo presionado
 void buttonB2Pressed();		// boton más Tiempo presionado
 void buttonB3Pressed();		// boton Disparo presionado
 
+void decreaseTime();		// función para decrementar Tiempo Disparo
+void increaseTime();		// función para incrementar Tiempo Disparo
+void applyRx();				// función para activar etapa de Disparo
+
 bool_t readKey();			//lectura del botón de usuario
 //void miToggleLed(uint8_t led);
 

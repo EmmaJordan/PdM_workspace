@@ -28,7 +28,6 @@ bool_t delayRead( delay_t * delay );
 void delayWrite( delay_t * delay, tick_t duration );
 tick_t delayGetDuration( delay_t * delay );
 
-void inputsInit();
-void outputsInit();
+
 
 #endif /* API_INC_API_DELAY_H_ */

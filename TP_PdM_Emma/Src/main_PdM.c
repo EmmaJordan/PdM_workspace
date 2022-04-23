@@ -18,11 +18,12 @@
   ******************************************************************************
   */
 
-#include "main.h" //#define PLACA_NUCLEO para corregir
+#include "main.h"
 #include "API_adc.h"
 #include "API_uart.h"
 #include "API_delay.h"
 #include "API_debounce.h"
+#include "API_system.h"
 
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,12 +42,6 @@ static void Error_Handler(void);
   * @param  None
   * @retval None
   */
-
-uint16_t tiempoDisparo; //variable pública Tiempo de emisión de Rx
-
-void decreaseTime();
-void increaseTime();
-void applyRx();
 
 int main(void)
 {
@@ -89,16 +84,8 @@ int main(void)
 	myADC_init();
 
 	/* Infinite loop */
-	bool_t error;
+	bool_t error = 0;
 	uint8_t state = 0;
-	typedef enum{
-		s_rest,
-		s_decreaseTime,
-		s_increaseTime,
-		s_alarm,
-		s_Rx,
-	} debounceState_t;
-
 	debounceState_t mainState = s_rest;
 	while (1)
 	{
@@ -142,50 +129,11 @@ int main(void)
 					mainState = s_rest;
 					break;
 		}
-
 		HAL_Delay(10);
 	}
 }
 
-//Función: disminuye tiempo de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void decreaseTime()
-{
-	BSP_LED_On(LED1);
-	if(tiempoDisparo>100) tiempoDisparo = tiempoDisparo-100;
-	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
-	while(BUTTON_menosTiempo_PRESSED);
-	BSP_LED_Off(LED1);
-	HAL_Delay(100);
-}
 
-//Función: aumenta tiempo de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void increaseTime()
-{
-	BSP_LED_On(LED2);
-	if(tiempoDisparo<3000) tiempoDisparo = tiempoDisparo+100;
-	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
-	while(BUTTON_masTiempo_PRESSED);
-	BSP_LED_Off(LED2);
-	HAL_Delay(100);
-}
-
-//Función: ejecucion de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void applyRx()
-{
-	printf("Disparo ON\r\n");
-	BSP_LED_On(LED3);
-	HAL_Delay(tiempoDisparo);
-	BSP_LED_Off(LED3);
-	printf("Disparo OFF\r\n");
-	while(BSP_PB_GetState(BUTTON_USER)); //espera a que suelte disparo
-	HAL_Delay(200);
-}
 
 /**
   * @brief  System Clock Configuration

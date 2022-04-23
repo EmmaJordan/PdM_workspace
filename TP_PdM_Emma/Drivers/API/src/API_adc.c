@@ -89,7 +89,7 @@ static uint32_t lecturaADC = 0;
 static uint8_t 	valorAnteriorADC =0;
 static uint8_t 	valorADC = 0;
 static bool_t error = 0;
-/*	Función: actualización de lectura AD para mostrar Línea por terminal
+/*	Función: actualización de lectura AD para mostrar Línea por terminal (muestra variaciones +-2)
 	Entrada: ninguna
 	Salida: error (0:ok, 1:bloqueo por problema de Línea)
 	Nota: es una función privada porque se llama internamente en API_adc */
@@ -98,7 +98,8 @@ bool_t myADC_update()
 	lecturaADC = ( myADC_read()+myADC_read()+myADC_read() ) / 3; 	//Promedio de 3 lecturas para disminuir oscilación
 	valorADC   = ((float)lecturaADC/ADC_RESOLUTION)*AMPLITUD_LINEA;	//Escala Linea
 
-	if(valorAnteriorADC != valorADC)
+	if( (valorAnteriorADC <= valorADC-2) || (valorAnteriorADC >= valorADC+2) )
+	//if( valorAnteriorADC != valorADC )
 	{
 		if(valorADC<MIN_LINEA)
 		{
@@ -115,8 +116,9 @@ bool_t myADC_update()
 			printf("Linea = %dVca\r\n", valorADC);
 			error = 0;
 		}
+		valorAnteriorADC = valorADC; //Evita escrituras sucesivas iguales (+-2)
 	}
-	valorAnteriorADC = valorADC; //Guarda valor anterior para evitar escrituras sucesivas iguales
+
 	return error;
 }
 
