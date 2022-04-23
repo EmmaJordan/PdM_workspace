@@ -93,6 +93,8 @@ static uint32_t myADC_read()
 
 
 /*	Función: actualización de lectura AD para mostrar Línea por terminal (muestra variaciones +-2)
+    Esto se realiza para que pequeñas variaciones insignificantes en la Línea no ocupen tiempo
+    de impresión en pantalla o display, ni se vea un valor oscilando permanentemente.
 	Entrada: ninguna
 	Salida: error (0:ok, 1:bloqueo por problema de Línea)
 	Nota: es una función privada porque se llama internamente en API_adc */
@@ -100,7 +102,6 @@ bool_t myADC_update()
 {
 	lecturaADC = ( myADC_read()+myADC_read()+myADC_read() ) / 3; 	//Promedio de 3 lecturas para disminuir oscilación
 	valorADC   = ((float)lecturaADC/ADC_RESOLUTION)*AMPLITUD_LINEA;	//Escala Linea
-
 	if( (valorAnteriorADC <= valorADC-2) || (valorAnteriorADC >= valorADC+2) )
 	{
 		if(AMPLITUD_LINEA == valorADC)

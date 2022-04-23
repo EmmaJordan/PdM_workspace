@@ -1391,7 +1391,7 @@ static uint32_t myADC_read()
  8000fec:	20000214 	.word	0x20000214
 
 08000ff0 <myADC_update>:
-/*	Función: actualización de lectura AD para mostrar Línea por terminal (muestra variaciones +-2)
+    de impresión en pantalla o display, ni se vea un valor oscilando permanentemente.
 	Entrada: ninguna
 	Salida: error (0:ok, 1:bloqueo por problema de Línea)
 	Nota: es una función privada porque se llama internamente en API_adc */
@@ -1439,7 +1439,6 @@ bool_t myADC_update()
  8001054:	b2da      	uxtb	r2, r3
  8001056:	4b27      	ldr	r3, [pc, #156]	; (80010f4 <myADC_update+0x104>)
  8001058:	701a      	strb	r2, [r3, #0]
-
 	if( (valorAnteriorADC <= valorADC-2) || (valorAnteriorADC >= valorADC+2) )
  800105a:	4b26      	ldr	r3, [pc, #152]	; (80010f4 <myADC_update+0x104>)
  800105c:	781b      	ldrb	r3, [r3, #0]
