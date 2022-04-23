@@ -29,16 +29,6 @@
 #include "stm32f4xx_nucleo_144.h"
 #include <stm32f4xx_hal_adc.h>
 
-typedef enum{
-	s_rest,
-	s_decreaseTime,
-	s_increaseTime,
-	s_alarm,
-	s_Rx,
-} debounceState_t;
-
-
-
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* User can use this section to tailor USARTx/UARTx instance used and associated

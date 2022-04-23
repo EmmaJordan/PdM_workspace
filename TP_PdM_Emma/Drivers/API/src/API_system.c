@@ -7,11 +7,68 @@
 
 
 #include "API_system.h"
+#include "API_debounce.h"
+#include "API_adc.h"
 
 #define menosTiempo_PRESSED  (GPIOG->IDR & (1<<1) )  //-Tiempo
 #define masTiempo_PRESSED  	 (GPIOG->IDR & (1<<0) )  //+Tiempo
 
+typedef enum{
+	s_rest,
+	s_decreaseTime,
+	s_increaseTime,
+	s_alarm,
+	s_Rx,
+} debounceState_t;
+
+static bool_t error = 0;
+static uint8_t state = 0;
 static uint16_t tiempoDisparo = 100;
+debounceState_t mainState = s_rest;
+
+void mainFSM_update()
+{
+	switch (mainState)
+	{
+		case s_rest:
+
+				error = myADC_update();
+				if(error==0)
+				{
+					state = debounceFSM_update();
+					if(state==0) 		mainState = s_rest;
+					else if(state==1) 	mainState = s_decreaseTime;
+					else if(state==2)	mainState = s_increaseTime;
+					else if(state==3)   mainState = s_Rx;
+				}
+				else mainState = s_alarm;
+				break;
+
+		case s_decreaseTime:
+
+				decreaseTime();
+				mainState = s_rest;
+				break;
+
+		case s_increaseTime:
+
+				increaseTime();
+				mainState = s_rest;
+				break;
+
+		case s_alarm:
+
+				error = myADC_update();
+				if(error==0) mainState = s_rest;
+				break;
+
+		case s_Rx:
+
+				applyRx();
+				mainState = s_rest;
+				break;
+	}
+}
 
 // Entrada: Ninguna
 // Salida: Ninguna

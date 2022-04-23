@@ -84,51 +84,9 @@ int main(void)
 	myADC_init();
 
 	/* Infinite loop */
-	bool_t error = 0;
-	uint8_t state = 0;
-	debounceState_t mainState = s_rest;
 	while (1)
 	{
-		switch (mainState)
-		{
-			case s_rest:
-
-					error = myADC_update();
-					if(error==0)
-					{
-						state = debounceFSM_update();
-						if(state==0) 		mainState = s_rest;
-						else if(state==1) 	mainState = s_decreaseTime;
-						else if(state==2)	mainState = s_increaseTime;
-						else if(state==3)   mainState = s_Rx;
-					}
-					else mainState = s_alarm;
-					break;
-
-			case s_decreaseTime:
-
-					decreaseTime();
-					mainState = s_rest;
-					break;
-
-			case s_increaseTime:
-
-					increaseTime();
-					mainState = s_rest;
-					break;
-
-			case s_alarm:
-
-					error = myADC_update();
-					if(error==0) mainState = s_rest;
-					break;
-
-			case s_Rx:
-
-					applyRx();
-					mainState = s_rest;
-					break;
-		}
+		mainFSM_update();
 		HAL_Delay(10);
 	}
 }

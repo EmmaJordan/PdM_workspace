@@ -16,6 +16,7 @@
 #define pinBuzzer 2
 #define pinRx 4
 
+void mainFSM_update();		// MEF principal
 void inputsInit();			// inicializacion de las entradas
 void outputsInit();			// inicializacion de las Salidas
 void decreaseTime();		// decrementar Tiempo Disparo
