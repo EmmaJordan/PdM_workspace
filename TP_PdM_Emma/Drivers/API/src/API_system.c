@@ -8,6 +8,11 @@
 
 #include "API_system.h"
 
+#define menosTiempo_PRESSED  (GPIOG->IDR & (1<<1) )  //-Tiempo
+#define masTiempo_PRESSED  	 (GPIOG->IDR & (1<<0) )  //+Tiempo
+
+static uint16_t tiempoDisparo = 100;
+
 // Entrada: Ninguna
 // Salida: Ninguna
 // Función: Inicialización de las entradas del Sistema
@@ -54,4 +59,44 @@ void outputsInit()
 	GPIOE->OTYPER  &=~ (1<<pinRx);
 	GPIOE->OSPEEDR &=~ (3<<pinRx*3);
 	GPIOE->PUPDR   &=~ (3<<pinRx*3);
+}
+
+//Función: disminuye tiempo de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void decreaseTime()
+{
+	BSP_LED_On(LED1);
+	if(tiempoDisparo>100) tiempoDisparo = tiempoDisparo-100;
+	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
+	while(menosTiempo_PRESSED);
+	BSP_LED_Off(LED1);
+	HAL_Delay(100);
+}
+
+//Función: aumenta tiempo de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void increaseTime()
+{
+	BSP_LED_On(LED2);
+	if(tiempoDisparo<3000) tiempoDisparo = tiempoDisparo+100;
+	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
+	while(masTiempo_PRESSED);
+	BSP_LED_Off(LED2);
+	HAL_Delay(100);
+}
+
+//Función: ejecución de Disparo de RX, durante el tiempo configurado
+//Entrada: ninguna
+//Salida: ninguna
+void applyRx()
+{
+	printf("Disparo ON\r\n");
+	BSP_LED_On(LED3);
+	HAL_Delay(tiempoDisparo);
+	BSP_LED_Off(LED3);
+	printf("Disparo OFF\r\n");
+	while(BSP_PB_GetState(BUTTON_USER)); //espera a que suelte disparo
+	HAL_Delay(200);
 }

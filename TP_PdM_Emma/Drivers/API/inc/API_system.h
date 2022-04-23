@@ -16,7 +16,10 @@
 #define pinBuzzer 2
 #define pinRx 4
 
-void inputsInit();
-void outputsInit();
+void inputsInit();			// inicializacion de las entradas
+void outputsInit();			// inicializacion de las Salidas
+void decreaseTime();		// decrementar Tiempo Disparo
+void increaseTime();		// incrementar Tiempo Disparo
+void applyRx();				// activar etapa de Disparo
 
 #endif /* API_INC_API_SYSTEM_H_ */

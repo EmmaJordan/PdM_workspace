@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  000201f0  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000c6cf  00000000  00000000  00020220  2**0
+ 13 .debug_info   0000c6a7  00000000  00000000  00020220  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000024ff  00000000  00000000  0002c8ef  2**0
+ 14 .debug_abbrev 00002547  00000000  00000000  0002c8c7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000a78  00000000  00000000  0002edf0  2**3
+ 15 .debug_aranges 00000a78  00000000  00000000  0002ee10  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_ranges 00000950  00000000  00000000  0002f868  2**3
+ 16 .debug_ranges 00000950  00000000  00000000  0002f888  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  00028a5c  00000000  00000000  000301b8  2**0
+ 17 .debug_macro  00028a68  00000000  00000000  000301d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00011ac0  00000000  00000000  00058c14  2**0
+ 18 .debug_line   00011ac0  00000000  00000000  00058c40  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000f0195  00000000  00000000  0006a6d4  2**0
+ 19 .debug_str    000f0195  00000000  00000000  0006a700  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  0015a869  2**0
+ 20 .comment      00000050  00000000  00000000  0015a895  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00003890  00000000  00000000  0015a8bc  2**2
+ 21 .debug_frame  00003890  00000000  00000000  0015a8e8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1594,7 +1594,7 @@ void debounceB1_update()
 
 					if( delayRead(&delayAntiReboteB1) )
  8001150:	4821      	ldr	r0, [pc, #132]	; (80011d8 <debounceB1_update+0xc0>)
- 8001152:	f000 f9c7 	bl	80014e4 <delayRead>
+ 8001152:	f000 f94b 	bl	80013ec <delayRead>
  8001156:	4603      	mov	r3, r0
  8001158:	2b00      	cmp	r3, #0
  800115a:	d032      	beq.n	80011c2 <debounceB1_update+0xaa>
@@ -1649,7 +1649,7 @@ void debounceB1_update()
 
 					if( delayRead(&delayAntiReboteB1) )
  8001192:	4811      	ldr	r0, [pc, #68]	; (80011d8 <debounceB1_update+0xc0>)
- 8001194:	f000 f9a6 	bl	80014e4 <delayRead>
+ 8001194:	f000 f92a 	bl	80013ec <delayRead>
  8001198:	4603      	mov	r3, r0
  800119a:	2b00      	cmp	r3, #0
  800119c:	d015      	beq.n	80011ca <debounceB1_update+0xb2>
@@ -1742,7 +1742,7 @@ void debounceB2_update()
 
 					if( delayRead(&delayAntiReboteB2) )
  8001218:	4821      	ldr	r0, [pc, #132]	; (80012a0 <debounceB2_update+0xc0>)
- 800121a:	f000 f963 	bl	80014e4 <delayRead>
+ 800121a:	f000 f8e7 	bl	80013ec <delayRead>
  800121e:	4603      	mov	r3, r0
  8001220:	2b00      	cmp	r3, #0
  8001222:	d032      	beq.n	800128a <debounceB2_update+0xaa>
@@ -1797,7 +1797,7 @@ void debounceB2_update()
 
 					if( delayRead(&delayAntiReboteB2) )
  800125a:	4811      	ldr	r0, [pc, #68]	; (80012a0 <debounceB2_update+0xc0>)
- 800125c:	f000 f942 	bl	80014e4 <delayRead>
+ 800125c:	f000 f8c6 	bl	80013ec <delayRead>
  8001260:	4603      	mov	r3, r0
  8001262:	2b00      	cmp	r3, #0
  8001264:	d015      	beq.n	8001292 <debounceB2_update+0xb2>
@@ -1890,7 +1890,7 @@ void debounceB3_update()
 
 						if( delayRead(&delayAntiReboteB3) )
  80012e0:	4820      	ldr	r0, [pc, #128]	; (8001364 <debounceB3_update+0xbc>)
- 80012e2:	f000 f8ff 	bl	80014e4 <delayRead>
+ 80012e2:	f000 f883 	bl	80013ec <delayRead>
  80012e6:	4603      	mov	r3, r0
  80012e8:	2b00      	cmp	r3, #0
  80012ea:	d032      	beq.n	8001352 <debounceB3_update+0xaa>
@@ -1945,7 +1945,7 @@ void debounceB3_update()
 
 						if( delayRead(&delayAntiReboteB3) )
  8001322:	4810      	ldr	r0, [pc, #64]	; (8001364 <debounceB3_update+0xbc>)
- 8001324:	f000 f8de 	bl	80014e4 <delayRead>
+ 8001324:	f000 f862 	bl	80013ec <delayRead>
  8001328:	4603      	mov	r3, r0
  800132a:	2b00      	cmp	r3, #0
  800132c:	d015      	beq.n	800135a <debounceB3_update+0xb2>
@@ -2009,15 +2009,15 @@ void debounceFSM_init()
 	delayInit(&delayAntiReboteB1, TIME_ANTIREBOTE);
  8001370:	2128      	movs	r1, #40	; 0x28
  8001372:	480b      	ldr	r0, [pc, #44]	; (80013a0 <debounceFSM_init+0x34>)
- 8001374:	f000 f89c 	bl	80014b0 <delayInit>
+ 8001374:	f000 f820 	bl	80013b8 <delayInit>
 	delayInit(&delayAntiReboteB2, TIME_ANTIREBOTE);
  8001378:	2128      	movs	r1, #40	; 0x28
  800137a:	480a      	ldr	r0, [pc, #40]	; (80013a4 <debounceFSM_init+0x38>)
- 800137c:	f000 f898 	bl	80014b0 <delayInit>
+ 800137c:	f000 f81c 	bl	80013b8 <delayInit>
 	delayInit(&delayAntiReboteB3, TIME_ANTIREBOTE);
  8001380:	2128      	movs	r1, #40	; 0x28
  8001382:	4809      	ldr	r0, [pc, #36]	; (80013a8 <debounceFSM_init+0x3c>)
- 8001384:	f000 f894 	bl	80014b0 <delayInit>
+ 8001384:	f000 f818 	bl	80013b8 <delayInit>
 	actualB1State = BUTTON_UP;
  8001388:	4b08      	ldr	r3, [pc, #32]	; (80013ac <debounceFSM_init+0x40>)
  800138a:	2200      	movs	r2, #0
@@ -2041,430 +2041,430 @@ void debounceFSM_init()
  80013b0:	20000281 	.word	0x20000281
  80013b4:	20000282 	.word	0x20000282
 
-080013b8 <decreaseTime>:
-
-//Función: disminuye tiempo de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void decreaseTime()
-{
- 80013b8:	b580      	push	{r7, lr}
- 80013ba:	af00      	add	r7, sp, #0
-	BSP_LED_On(LED1);
- 80013bc:	2000      	movs	r0, #0
- 80013be:	f000 f9f5 	bl	80017ac <BSP_LED_On>
-	if(tiempoDisparo>100) tiempoDisparo = tiempoDisparo-100;
- 80013c2:	4b0f      	ldr	r3, [pc, #60]	; (8001400 <decreaseTime+0x48>)
- 80013c4:	881b      	ldrh	r3, [r3, #0]
- 80013c6:	2b64      	cmp	r3, #100	; 0x64
- 80013c8:	d905      	bls.n	80013d6 <decreaseTime+0x1e>
- 80013ca:	4b0d      	ldr	r3, [pc, #52]	; (8001400 <decreaseTime+0x48>)
- 80013cc:	881b      	ldrh	r3, [r3, #0]
- 80013ce:	3b64      	subs	r3, #100	; 0x64
- 80013d0:	b29a      	uxth	r2, r3
- 80013d2:	4b0b      	ldr	r3, [pc, #44]	; (8001400 <decreaseTime+0x48>)
- 80013d4:	801a      	strh	r2, [r3, #0]
-	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
- 80013d6:	4b0a      	ldr	r3, [pc, #40]	; (8001400 <decreaseTime+0x48>)
- 80013d8:	881b      	ldrh	r3, [r3, #0]
- 80013da:	4619      	mov	r1, r3
- 80013dc:	4809      	ldr	r0, [pc, #36]	; (8001404 <decreaseTime+0x4c>)
- 80013de:	f003 fd5f 	bl	8004ea0 <iprintf>
-	while(BUTTON_menosTiempo_PRESSED);
- 80013e2:	bf00      	nop
- 80013e4:	4b08      	ldr	r3, [pc, #32]	; (8001408 <decreaseTime+0x50>)
- 80013e6:	691b      	ldr	r3, [r3, #16]
- 80013e8:	f003 0302 	and.w	r3, r3, #2
- 80013ec:	2b00      	cmp	r3, #0
- 80013ee:	d1f9      	bne.n	80013e4 <decreaseTime+0x2c>
-	BSP_LED_Off(LED1);
- 80013f0:	2000      	movs	r0, #0
- 80013f2:	f000 f9f5 	bl	80017e0 <BSP_LED_Off>
-	HAL_Delay(100);
- 80013f6:	2064      	movs	r0, #100	; 0x64
- 80013f8:	f000 fc1a 	bl	8001c30 <HAL_Delay>
-}
- 80013fc:	bf00      	nop
- 80013fe:	bd80      	pop	{r7, pc}
- 8001400:	20000000 	.word	0x20000000
- 8001404:	080071c4 	.word	0x080071c4
- 8001408:	40021800 	.word	0x40021800
-
-0800140c <increaseTime>:
-
-//Función: aumenta tiempo de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void increaseTime()
-{
- 800140c:	b580      	push	{r7, lr}
- 800140e:	af00      	add	r7, sp, #0
-	BSP_LED_On(LED2);
- 8001410:	2001      	movs	r0, #1
- 8001412:	f000 f9cb 	bl	80017ac <BSP_LED_On>
-	if(tiempoDisparo<3000) tiempoDisparo = tiempoDisparo+100;
- 8001416:	4b10      	ldr	r3, [pc, #64]	; (8001458 <increaseTime+0x4c>)
- 8001418:	881b      	ldrh	r3, [r3, #0]
- 800141a:	f640 32b7 	movw	r2, #2999	; 0xbb7
- 800141e:	4293      	cmp	r3, r2
- 8001420:	d805      	bhi.n	800142e <increaseTime+0x22>
- 8001422:	4b0d      	ldr	r3, [pc, #52]	; (8001458 <increaseTime+0x4c>)
- 8001424:	881b      	ldrh	r3, [r3, #0]
- 8001426:	3364      	adds	r3, #100	; 0x64
- 8001428:	b29a      	uxth	r2, r3
- 800142a:	4b0b      	ldr	r3, [pc, #44]	; (8001458 <increaseTime+0x4c>)
- 800142c:	801a      	strh	r2, [r3, #0]
-	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
- 800142e:	4b0a      	ldr	r3, [pc, #40]	; (8001458 <increaseTime+0x4c>)
- 8001430:	881b      	ldrh	r3, [r3, #0]
- 8001432:	4619      	mov	r1, r3
- 8001434:	4809      	ldr	r0, [pc, #36]	; (800145c <increaseTime+0x50>)
- 8001436:	f003 fd33 	bl	8004ea0 <iprintf>
-	while(BUTTON_masTiempo_PRESSED);
- 800143a:	bf00      	nop
- 800143c:	4b08      	ldr	r3, [pc, #32]	; (8001460 <increaseTime+0x54>)
- 800143e:	691b      	ldr	r3, [r3, #16]
- 8001440:	f003 0301 	and.w	r3, r3, #1
- 8001444:	2b00      	cmp	r3, #0
- 8001446:	d1f9      	bne.n	800143c <increaseTime+0x30>
-	BSP_LED_Off(LED2);
- 8001448:	2001      	movs	r0, #1
- 800144a:	f000 f9c9 	bl	80017e0 <BSP_LED_Off>
-	HAL_Delay(100);
- 800144e:	2064      	movs	r0, #100	; 0x64
- 8001450:	f000 fbee 	bl	8001c30 <HAL_Delay>
-}
- 8001454:	bf00      	nop
- 8001456:	bd80      	pop	{r7, pc}
- 8001458:	20000000 	.word	0x20000000
- 800145c:	080071c4 	.word	0x080071c4
- 8001460:	40021800 	.word	0x40021800
-
-08001464 <applyRx>:
-
-//Función: ejecución de Disparo de RX, durante el tiempo configurado
-//Entrada: ninguna
-//Salida: ninguna
-void applyRx()
-{
- 8001464:	b580      	push	{r7, lr}
- 8001466:	af00      	add	r7, sp, #0
-	printf("Disparo ON\r\n");
- 8001468:	480e      	ldr	r0, [pc, #56]	; (80014a4 <applyRx+0x40>)
- 800146a:	f003 fd9f 	bl	8004fac <puts>
-	BSP_LED_On(LED3);
- 800146e:	2002      	movs	r0, #2
- 8001470:	f000 f99c 	bl	80017ac <BSP_LED_On>
-	HAL_Delay(tiempoDisparo);
- 8001474:	4b0c      	ldr	r3, [pc, #48]	; (80014a8 <applyRx+0x44>)
- 8001476:	881b      	ldrh	r3, [r3, #0]
- 8001478:	4618      	mov	r0, r3
- 800147a:	f000 fbd9 	bl	8001c30 <HAL_Delay>
-	BSP_LED_Off(LED3);
- 800147e:	2002      	movs	r0, #2
- 8001480:	f000 f9ae 	bl	80017e0 <BSP_LED_Off>
-	printf("Disparo OFF\r\n");
- 8001484:	4809      	ldr	r0, [pc, #36]	; (80014ac <applyRx+0x48>)
- 8001486:	f003 fd91 	bl	8004fac <puts>
-	while(BSP_PB_GetState(BUTTON_USER)); //espera a que suelte disparo
- 800148a:	bf00      	nop
- 800148c:	2000      	movs	r0, #0
- 800148e:	f000 fa17 	bl	80018c0 <BSP_PB_GetState>
- 8001492:	4603      	mov	r3, r0
- 8001494:	2b00      	cmp	r3, #0
- 8001496:	d1f9      	bne.n	800148c <applyRx+0x28>
-	HAL_Delay(200);
- 8001498:	20c8      	movs	r0, #200	; 0xc8
- 800149a:	f000 fbc9 	bl	8001c30 <HAL_Delay>
-}
- 800149e:	bf00      	nop
- 80014a0:	bd80      	pop	{r7, pc}
- 80014a2:	bf00      	nop
- 80014a4:	080071e0 	.word	0x080071e0
- 80014a8:	20000000 	.word	0x20000000
- 80014ac:	080071ec 	.word	0x080071ec
-
-080014b0 <delayInit>:
+080013b8 <delayInit>:
 
 // Entrada: Puntero al delay y su duración en ms
 // Salida: Ninguna
 // Función: Inicializa los parámetros internos del delay
 void delayInit( delay_t * delay, tick_t duration )
 {
- 80014b0:	b480      	push	{r7}
- 80014b2:	b083      	sub	sp, #12
- 80014b4:	af00      	add	r7, sp, #0
- 80014b6:	6078      	str	r0, [r7, #4]
- 80014b8:	6039      	str	r1, [r7, #0]
+ 80013b8:	b480      	push	{r7}
+ 80013ba:	b083      	sub	sp, #12
+ 80013bc:	af00      	add	r7, sp, #0
+ 80013be:	6078      	str	r0, [r7, #4]
+ 80013c0:	6039      	str	r1, [r7, #0]
 	if((delay != NULL) && (duration > 0))			// Verifica que el puntero sea valido y que la duracion sea un valor positivo
- 80014ba:	687b      	ldr	r3, [r7, #4]
- 80014bc:	2b00      	cmp	r3, #0
- 80014be:	d00b      	beq.n	80014d8 <delayInit+0x28>
- 80014c0:	683b      	ldr	r3, [r7, #0]
- 80014c2:	2b00      	cmp	r3, #0
- 80014c4:	d008      	beq.n	80014d8 <delayInit+0x28>
+ 80013c2:	687b      	ldr	r3, [r7, #4]
+ 80013c4:	2b00      	cmp	r3, #0
+ 80013c6:	d00b      	beq.n	80013e0 <delayInit+0x28>
+ 80013c8:	683b      	ldr	r3, [r7, #0]
+ 80013ca:	2b00      	cmp	r3, #0
+ 80013cc:	d008      	beq.n	80013e0 <delayInit+0x28>
 	{
 		delay->startTime = 0;
- 80014c6:	687b      	ldr	r3, [r7, #4]
- 80014c8:	2200      	movs	r2, #0
- 80014ca:	601a      	str	r2, [r3, #0]
+ 80013ce:	687b      	ldr	r3, [r7, #4]
+ 80013d0:	2200      	movs	r2, #0
+ 80013d2:	601a      	str	r2, [r3, #0]
 		delay->duration = duration;
- 80014cc:	687b      	ldr	r3, [r7, #4]
- 80014ce:	683a      	ldr	r2, [r7, #0]
- 80014d0:	605a      	str	r2, [r3, #4]
+ 80013d4:	687b      	ldr	r3, [r7, #4]
+ 80013d6:	683a      	ldr	r2, [r7, #0]
+ 80013d8:	605a      	str	r2, [r3, #4]
 		delay->running = false;						// Inicializa el delay detenido
- 80014d2:	687b      	ldr	r3, [r7, #4]
- 80014d4:	2200      	movs	r2, #0
- 80014d6:	721a      	strb	r2, [r3, #8]
+ 80013da:	687b      	ldr	r3, [r7, #4]
+ 80013dc:	2200      	movs	r2, #0
+ 80013de:	721a      	strb	r2, [r3, #8]
 	}
 }
- 80014d8:	bf00      	nop
- 80014da:	370c      	adds	r7, #12
- 80014dc:	46bd      	mov	sp, r7
- 80014de:	f85d 7b04 	ldr.w	r7, [sp], #4
- 80014e2:	4770      	bx	lr
+ 80013e0:	bf00      	nop
+ 80013e2:	370c      	adds	r7, #12
+ 80013e4:	46bd      	mov	sp, r7
+ 80013e6:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 80013ea:	4770      	bx	lr
 
-080014e4 <delayRead>:
+080013ec <delayRead>:
 
 // Entrada: Puntero al delay
 // Salida: Bool que indica si ya transcurrió el tiempo del delay o no.
 // Función: Comprueba si ya transcurrio el tiempo del delay
 bool_t delayRead( delay_t * delay )
 {
- 80014e4:	b580      	push	{r7, lr}
- 80014e6:	b082      	sub	sp, #8
- 80014e8:	af00      	add	r7, sp, #0
- 80014ea:	6078      	str	r0, [r7, #4]
+ 80013ec:	b580      	push	{r7, lr}
+ 80013ee:	b082      	sub	sp, #8
+ 80013f0:	af00      	add	r7, sp, #0
+ 80013f2:	6078      	str	r0, [r7, #4]
 	if((delay != NULL) && (delay > 0))			// Verifica que el puntero sea válido y que la duración sea un valor positivo
- 80014ec:	687b      	ldr	r3, [r7, #4]
- 80014ee:	2b00      	cmp	r3, #0
- 80014f0:	d021      	beq.n	8001536 <delayRead+0x52>
- 80014f2:	687b      	ldr	r3, [r7, #4]
- 80014f4:	2b00      	cmp	r3, #0
- 80014f6:	d01e      	beq.n	8001536 <delayRead+0x52>
+ 80013f4:	687b      	ldr	r3, [r7, #4]
+ 80013f6:	2b00      	cmp	r3, #0
+ 80013f8:	d021      	beq.n	800143e <delayRead+0x52>
+ 80013fa:	687b      	ldr	r3, [r7, #4]
+ 80013fc:	2b00      	cmp	r3, #0
+ 80013fe:	d01e      	beq.n	800143e <delayRead+0x52>
 	{
 		if(delay->running)
- 80014f8:	687b      	ldr	r3, [r7, #4]
- 80014fa:	7a1b      	ldrb	r3, [r3, #8]
- 80014fc:	2b00      	cmp	r3, #0
- 80014fe:	d010      	beq.n	8001522 <delayRead+0x3e>
+ 8001400:	687b      	ldr	r3, [r7, #4]
+ 8001402:	7a1b      	ldrb	r3, [r3, #8]
+ 8001404:	2b00      	cmp	r3, #0
+ 8001406:	d010      	beq.n	800142a <delayRead+0x3e>
 		{
 			if(HAL_GetTick() >= (delay->startTime + delay->duration))
- 8001500:	f000 fb8a 	bl	8001c18 <HAL_GetTick>
- 8001504:	4601      	mov	r1, r0
- 8001506:	687b      	ldr	r3, [r7, #4]
- 8001508:	681a      	ldr	r2, [r3, #0]
- 800150a:	687b      	ldr	r3, [r7, #4]
- 800150c:	685b      	ldr	r3, [r3, #4]
- 800150e:	4413      	add	r3, r2
- 8001510:	4299      	cmp	r1, r3
- 8001512:	d304      	bcc.n	800151e <delayRead+0x3a>
+ 8001408:	f000 fc06 	bl	8001c18 <HAL_GetTick>
+ 800140c:	4601      	mov	r1, r0
+ 800140e:	687b      	ldr	r3, [r7, #4]
+ 8001410:	681a      	ldr	r2, [r3, #0]
+ 8001412:	687b      	ldr	r3, [r7, #4]
+ 8001414:	685b      	ldr	r3, [r3, #4]
+ 8001416:	4413      	add	r3, r2
+ 8001418:	4299      	cmp	r1, r3
+ 800141a:	d304      	bcc.n	8001426 <delayRead+0x3a>
 			{
 				delay->running = false;
- 8001514:	687b      	ldr	r3, [r7, #4]
- 8001516:	2200      	movs	r2, #0
- 8001518:	721a      	strb	r2, [r3, #8]
+ 800141c:	687b      	ldr	r3, [r7, #4]
+ 800141e:	2200      	movs	r2, #0
+ 8001420:	721a      	strb	r2, [r3, #8]
 				return true;
- 800151a:	2301      	movs	r3, #1
- 800151c:	e00c      	b.n	8001538 <delayRead+0x54>
+ 8001422:	2301      	movs	r3, #1
+ 8001424:	e00c      	b.n	8001440 <delayRead+0x54>
 			}
 			else
 			{
 				return false;
- 800151e:	2300      	movs	r3, #0
- 8001520:	e00a      	b.n	8001538 <delayRead+0x54>
+ 8001426:	2300      	movs	r3, #0
+ 8001428:	e00a      	b.n	8001440 <delayRead+0x54>
 			}
 		}
 		else
 		{
 			delay->startTime = HAL_GetTick();
- 8001522:	f000 fb79 	bl	8001c18 <HAL_GetTick>
- 8001526:	4602      	mov	r2, r0
- 8001528:	687b      	ldr	r3, [r7, #4]
- 800152a:	601a      	str	r2, [r3, #0]
+ 800142a:	f000 fbf5 	bl	8001c18 <HAL_GetTick>
+ 800142e:	4602      	mov	r2, r0
+ 8001430:	687b      	ldr	r3, [r7, #4]
+ 8001432:	601a      	str	r2, [r3, #0]
 			delay->running   = true;
- 800152c:	687b      	ldr	r3, [r7, #4]
- 800152e:	2201      	movs	r2, #1
- 8001530:	721a      	strb	r2, [r3, #8]
+ 8001434:	687b      	ldr	r3, [r7, #4]
+ 8001436:	2201      	movs	r2, #1
+ 8001438:	721a      	strb	r2, [r3, #8]
 			return false;
- 8001532:	2300      	movs	r3, #0
- 8001534:	e000      	b.n	8001538 <delayRead+0x54>
+ 800143a:	2300      	movs	r3, #0
+ 800143c:	e000      	b.n	8001440 <delayRead+0x54>
 		}
 	}
 	else
 	{
 		return false;
- 8001536:	2300      	movs	r3, #0
+ 800143e:	2300      	movs	r3, #0
 	}
 }
- 8001538:	4618      	mov	r0, r3
- 800153a:	3708      	adds	r7, #8
- 800153c:	46bd      	mov	sp, r7
- 800153e:	bd80      	pop	{r7, pc}
+ 8001440:	4618      	mov	r0, r3
+ 8001442:	3708      	adds	r7, #8
+ 8001444:	46bd      	mov	sp, r7
+ 8001446:	bd80      	pop	{r7, pc}
 
-08001540 <inputsInit>:
+08001448 <inputsInit>:
 
 // Entrada: Ninguna
 // Salida: Ninguna
 // Función: Inicialización de las entradas del Sistema
 void inputsInit()
 {
- 8001540:	b580      	push	{r7, lr}
- 8001542:	af00      	add	r7, sp, #0
+ 8001448:	b580      	push	{r7, lr}
+ 800144a:	af00      	add	r7, sp, #0
 	/* Initialize BSP PB for BUTTON_USER */
 	BSP_PB_Init(BUTTON_USER, BUTTON_MODE_GPIO);
- 8001544:	2100      	movs	r1, #0
- 8001546:	2000      	movs	r0, #0
- 8001548:	f000 f964 	bl	8001814 <BSP_PB_Init>
+ 800144c:	2100      	movs	r1, #0
+ 800144e:	2000      	movs	r0, #0
+ 8001450:	f000 f9e0 	bl	8001814 <BSP_PB_Init>
 
 	/* Initialize Button for -Time & +Time */
 	RCC->AHB1ENR |= (1<<6); //Habilita puerto G
- 800154c:	4b15      	ldr	r3, [pc, #84]	; (80015a4 <inputsInit+0x64>)
- 800154e:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 8001550:	4a14      	ldr	r2, [pc, #80]	; (80015a4 <inputsInit+0x64>)
- 8001552:	f043 0340 	orr.w	r3, r3, #64	; 0x40
- 8001556:	6313      	str	r3, [r2, #48]	; 0x30
+ 8001454:	4b15      	ldr	r3, [pc, #84]	; (80014ac <inputsInit+0x64>)
+ 8001456:	6b1b      	ldr	r3, [r3, #48]	; 0x30
+ 8001458:	4a14      	ldr	r2, [pc, #80]	; (80014ac <inputsInit+0x64>)
+ 800145a:	f043 0340 	orr.w	r3, r3, #64	; 0x40
+ 800145e:	6313      	str	r3, [r2, #48]	; 0x30
 
 	//PG0 -Time
 	GPIOG->MODER &=~ (3<<0);   			//00 --> entrada
- 8001558:	4b13      	ldr	r3, [pc, #76]	; (80015a8 <inputsInit+0x68>)
- 800155a:	681b      	ldr	r3, [r3, #0]
- 800155c:	4a12      	ldr	r2, [pc, #72]	; (80015a8 <inputsInit+0x68>)
- 800155e:	f023 0303 	bic.w	r3, r3, #3
- 8001562:	6013      	str	r3, [r2, #0]
+ 8001460:	4b13      	ldr	r3, [pc, #76]	; (80014b0 <inputsInit+0x68>)
+ 8001462:	681b      	ldr	r3, [r3, #0]
+ 8001464:	4a12      	ldr	r2, [pc, #72]	; (80014b0 <inputsInit+0x68>)
+ 8001466:	f023 0303 	bic.w	r3, r3, #3
+ 800146a:	6013      	str	r3, [r2, #0]
 	GPIOG->PUPDR &=~ (1<<0);			//10 --> pull down
- 8001564:	4b10      	ldr	r3, [pc, #64]	; (80015a8 <inputsInit+0x68>)
- 8001566:	68db      	ldr	r3, [r3, #12]
- 8001568:	4a0f      	ldr	r2, [pc, #60]	; (80015a8 <inputsInit+0x68>)
- 800156a:	f023 0301 	bic.w	r3, r3, #1
- 800156e:	60d3      	str	r3, [r2, #12]
+ 800146c:	4b10      	ldr	r3, [pc, #64]	; (80014b0 <inputsInit+0x68>)
+ 800146e:	68db      	ldr	r3, [r3, #12]
+ 8001470:	4a0f      	ldr	r2, [pc, #60]	; (80014b0 <inputsInit+0x68>)
+ 8001472:	f023 0301 	bic.w	r3, r3, #1
+ 8001476:	60d3      	str	r3, [r2, #12]
 	GPIOG->PUPDR |=  (1<<1);
- 8001570:	4b0d      	ldr	r3, [pc, #52]	; (80015a8 <inputsInit+0x68>)
- 8001572:	68db      	ldr	r3, [r3, #12]
- 8001574:	4a0c      	ldr	r2, [pc, #48]	; (80015a8 <inputsInit+0x68>)
- 8001576:	f043 0302 	orr.w	r3, r3, #2
- 800157a:	60d3      	str	r3, [r2, #12]
+ 8001478:	4b0d      	ldr	r3, [pc, #52]	; (80014b0 <inputsInit+0x68>)
+ 800147a:	68db      	ldr	r3, [r3, #12]
+ 800147c:	4a0c      	ldr	r2, [pc, #48]	; (80014b0 <inputsInit+0x68>)
+ 800147e:	f043 0302 	orr.w	r3, r3, #2
+ 8001482:	60d3      	str	r3, [r2, #12]
 
 	//PG1 +Time
 	GPIOG->MODER &=~ (3<<2);   			//00 --> entrada
- 800157c:	4b0a      	ldr	r3, [pc, #40]	; (80015a8 <inputsInit+0x68>)
- 800157e:	681b      	ldr	r3, [r3, #0]
- 8001580:	4a09      	ldr	r2, [pc, #36]	; (80015a8 <inputsInit+0x68>)
- 8001582:	f023 030c 	bic.w	r3, r3, #12
- 8001586:	6013      	str	r3, [r2, #0]
+ 8001484:	4b0a      	ldr	r3, [pc, #40]	; (80014b0 <inputsInit+0x68>)
+ 8001486:	681b      	ldr	r3, [r3, #0]
+ 8001488:	4a09      	ldr	r2, [pc, #36]	; (80014b0 <inputsInit+0x68>)
+ 800148a:	f023 030c 	bic.w	r3, r3, #12
+ 800148e:	6013      	str	r3, [r2, #0]
 	GPIOG->PUPDR &=~ (1<<2);			//10 --> pull down
- 8001588:	4b07      	ldr	r3, [pc, #28]	; (80015a8 <inputsInit+0x68>)
- 800158a:	68db      	ldr	r3, [r3, #12]
- 800158c:	4a06      	ldr	r2, [pc, #24]	; (80015a8 <inputsInit+0x68>)
- 800158e:	f023 0304 	bic.w	r3, r3, #4
- 8001592:	60d3      	str	r3, [r2, #12]
+ 8001490:	4b07      	ldr	r3, [pc, #28]	; (80014b0 <inputsInit+0x68>)
+ 8001492:	68db      	ldr	r3, [r3, #12]
+ 8001494:	4a06      	ldr	r2, [pc, #24]	; (80014b0 <inputsInit+0x68>)
+ 8001496:	f023 0304 	bic.w	r3, r3, #4
+ 800149a:	60d3      	str	r3, [r2, #12]
 	GPIOG->PUPDR |=  (1<<3);
- 8001594:	4b04      	ldr	r3, [pc, #16]	; (80015a8 <inputsInit+0x68>)
- 8001596:	68db      	ldr	r3, [r3, #12]
- 8001598:	4a03      	ldr	r2, [pc, #12]	; (80015a8 <inputsInit+0x68>)
- 800159a:	f043 0308 	orr.w	r3, r3, #8
- 800159e:	60d3      	str	r3, [r2, #12]
+ 800149c:	4b04      	ldr	r3, [pc, #16]	; (80014b0 <inputsInit+0x68>)
+ 800149e:	68db      	ldr	r3, [r3, #12]
+ 80014a0:	4a03      	ldr	r2, [pc, #12]	; (80014b0 <inputsInit+0x68>)
+ 80014a2:	f043 0308 	orr.w	r3, r3, #8
+ 80014a6:	60d3      	str	r3, [r2, #12]
 }
- 80015a0:	bf00      	nop
- 80015a2:	bd80      	pop	{r7, pc}
- 80015a4:	40023800 	.word	0x40023800
- 80015a8:	40021800 	.word	0x40021800
+ 80014a8:	bf00      	nop
+ 80014aa:	bd80      	pop	{r7, pc}
+ 80014ac:	40023800 	.word	0x40023800
+ 80014b0:	40021800 	.word	0x40021800
 
-080015ac <outputsInit>:
+080014b4 <outputsInit>:
 
 // Entrada: Ninguna
 // Salida: Ninguna
 // Función: Inicialización de las salidas del Sistema
 void outputsInit()
 {
- 80015ac:	b580      	push	{r7, lr}
- 80015ae:	af00      	add	r7, sp, #0
+ 80014b4:	b580      	push	{r7, lr}
+ 80014b6:	af00      	add	r7, sp, #0
 	/* Initialize BSP Led for LED1 */
 	BSP_LED_Init(LED1);
- 80015b0:	2000      	movs	r0, #0
- 80015b2:	f000 f8ab 	bl	800170c <BSP_LED_Init>
+ 80014b8:	2000      	movs	r0, #0
+ 80014ba:	f000 f927 	bl	800170c <BSP_LED_Init>
 	/* Initialize BSP Led for LED2 */
 	BSP_LED_Init(LED2);
- 80015b6:	2001      	movs	r0, #1
- 80015b8:	f000 f8a8 	bl	800170c <BSP_LED_Init>
+ 80014be:	2001      	movs	r0, #1
+ 80014c0:	f000 f924 	bl	800170c <BSP_LED_Init>
 	/* Initialize BSP Led for LED1 */
 	BSP_LED_Init(LED3);
- 80015bc:	2002      	movs	r0, #2
- 80015be:	f000 f8a5 	bl	800170c <BSP_LED_Init>
+ 80014c4:	2002      	movs	r0, #2
+ 80014c6:	f000 f921 	bl	800170c <BSP_LED_Init>
 	/* Initialize Buzzer */
 	RCC->AHB1ENR   |=  (1<<4); //Habilita puerto E <-- para PE2 (buzzer) y PE4 (Rx)
- 80015c2:	4b22      	ldr	r3, [pc, #136]	; (800164c <outputsInit+0xa0>)
- 80015c4:	6b1b      	ldr	r3, [r3, #48]	; 0x30
- 80015c6:	4a21      	ldr	r2, [pc, #132]	; (800164c <outputsInit+0xa0>)
- 80015c8:	f043 0310 	orr.w	r3, r3, #16
- 80015cc:	6313      	str	r3, [r2, #48]	; 0x30
+ 80014ca:	4b22      	ldr	r3, [pc, #136]	; (8001554 <outputsInit+0xa0>)
+ 80014cc:	6b1b      	ldr	r3, [r3, #48]	; 0x30
+ 80014ce:	4a21      	ldr	r2, [pc, #132]	; (8001554 <outputsInit+0xa0>)
+ 80014d0:	f043 0310 	orr.w	r3, r3, #16
+ 80014d4:	6313      	str	r3, [r2, #48]	; 0x30
 	GPIOE->MODER   &=~ (1<<(pinBuzzer*2+1));
- 80015ce:	4b20      	ldr	r3, [pc, #128]	; (8001650 <outputsInit+0xa4>)
- 80015d0:	681b      	ldr	r3, [r3, #0]
- 80015d2:	4a1f      	ldr	r2, [pc, #124]	; (8001650 <outputsInit+0xa4>)
- 80015d4:	f023 0320 	bic.w	r3, r3, #32
- 80015d8:	6013      	str	r3, [r2, #0]
+ 80014d6:	4b20      	ldr	r3, [pc, #128]	; (8001558 <outputsInit+0xa4>)
+ 80014d8:	681b      	ldr	r3, [r3, #0]
+ 80014da:	4a1f      	ldr	r2, [pc, #124]	; (8001558 <outputsInit+0xa4>)
+ 80014dc:	f023 0320 	bic.w	r3, r3, #32
+ 80014e0:	6013      	str	r3, [r2, #0]
 	GPIOE->MODER   |=  (1<<pinBuzzer*2);
- 80015da:	4b1d      	ldr	r3, [pc, #116]	; (8001650 <outputsInit+0xa4>)
- 80015dc:	681b      	ldr	r3, [r3, #0]
- 80015de:	4a1c      	ldr	r2, [pc, #112]	; (8001650 <outputsInit+0xa4>)
- 80015e0:	f043 0310 	orr.w	r3, r3, #16
- 80015e4:	6013      	str	r3, [r2, #0]
+ 80014e2:	4b1d      	ldr	r3, [pc, #116]	; (8001558 <outputsInit+0xa4>)
+ 80014e4:	681b      	ldr	r3, [r3, #0]
+ 80014e6:	4a1c      	ldr	r2, [pc, #112]	; (8001558 <outputsInit+0xa4>)
+ 80014e8:	f043 0310 	orr.w	r3, r3, #16
+ 80014ec:	6013      	str	r3, [r2, #0]
 	GPIOE->OTYPER  &=~ (1<<pinBuzzer);
- 80015e6:	4b1a      	ldr	r3, [pc, #104]	; (8001650 <outputsInit+0xa4>)
- 80015e8:	685b      	ldr	r3, [r3, #4]
- 80015ea:	4a19      	ldr	r2, [pc, #100]	; (8001650 <outputsInit+0xa4>)
- 80015ec:	f023 0304 	bic.w	r3, r3, #4
- 80015f0:	6053      	str	r3, [r2, #4]
+ 80014ee:	4b1a      	ldr	r3, [pc, #104]	; (8001558 <outputsInit+0xa4>)
+ 80014f0:	685b      	ldr	r3, [r3, #4]
+ 80014f2:	4a19      	ldr	r2, [pc, #100]	; (8001558 <outputsInit+0xa4>)
+ 80014f4:	f023 0304 	bic.w	r3, r3, #4
+ 80014f8:	6053      	str	r3, [r2, #4]
 	GPIOE->OSPEEDR &=~ (3<<pinBuzzer*3);
- 80015f2:	4b17      	ldr	r3, [pc, #92]	; (8001650 <outputsInit+0xa4>)
- 80015f4:	689b      	ldr	r3, [r3, #8]
- 80015f6:	4a16      	ldr	r2, [pc, #88]	; (8001650 <outputsInit+0xa4>)
- 80015f8:	f023 03c0 	bic.w	r3, r3, #192	; 0xc0
- 80015fc:	6093      	str	r3, [r2, #8]
+ 80014fa:	4b17      	ldr	r3, [pc, #92]	; (8001558 <outputsInit+0xa4>)
+ 80014fc:	689b      	ldr	r3, [r3, #8]
+ 80014fe:	4a16      	ldr	r2, [pc, #88]	; (8001558 <outputsInit+0xa4>)
+ 8001500:	f023 03c0 	bic.w	r3, r3, #192	; 0xc0
+ 8001504:	6093      	str	r3, [r2, #8]
 	GPIOE->PUPDR   &=~ (3<<pinBuzzer*3);
- 80015fe:	4b14      	ldr	r3, [pc, #80]	; (8001650 <outputsInit+0xa4>)
- 8001600:	68db      	ldr	r3, [r3, #12]
- 8001602:	4a13      	ldr	r2, [pc, #76]	; (8001650 <outputsInit+0xa4>)
- 8001604:	f023 03c0 	bic.w	r3, r3, #192	; 0xc0
- 8001608:	60d3      	str	r3, [r2, #12]
+ 8001506:	4b14      	ldr	r3, [pc, #80]	; (8001558 <outputsInit+0xa4>)
+ 8001508:	68db      	ldr	r3, [r3, #12]
+ 800150a:	4a13      	ldr	r2, [pc, #76]	; (8001558 <outputsInit+0xa4>)
+ 800150c:	f023 03c0 	bic.w	r3, r3, #192	; 0xc0
+ 8001510:	60d3      	str	r3, [r2, #12]
 	/* Initialize Disparo Rx */
 	GPIOE->MODER   &=~ (1<<(pinRx*2+1));
- 800160a:	4b11      	ldr	r3, [pc, #68]	; (8001650 <outputsInit+0xa4>)
- 800160c:	681b      	ldr	r3, [r3, #0]
- 800160e:	4a10      	ldr	r2, [pc, #64]	; (8001650 <outputsInit+0xa4>)
- 8001610:	f423 7300 	bic.w	r3, r3, #512	; 0x200
- 8001614:	6013      	str	r3, [r2, #0]
+ 8001512:	4b11      	ldr	r3, [pc, #68]	; (8001558 <outputsInit+0xa4>)
+ 8001514:	681b      	ldr	r3, [r3, #0]
+ 8001516:	4a10      	ldr	r2, [pc, #64]	; (8001558 <outputsInit+0xa4>)
+ 8001518:	f423 7300 	bic.w	r3, r3, #512	; 0x200
+ 800151c:	6013      	str	r3, [r2, #0]
 	GPIOE->MODER   |=  (1<<pinRx*2);
- 8001616:	4b0e      	ldr	r3, [pc, #56]	; (8001650 <outputsInit+0xa4>)
- 8001618:	681b      	ldr	r3, [r3, #0]
- 800161a:	4a0d      	ldr	r2, [pc, #52]	; (8001650 <outputsInit+0xa4>)
- 800161c:	f443 7380 	orr.w	r3, r3, #256	; 0x100
- 8001620:	6013      	str	r3, [r2, #0]
+ 800151e:	4b0e      	ldr	r3, [pc, #56]	; (8001558 <outputsInit+0xa4>)
+ 8001520:	681b      	ldr	r3, [r3, #0]
+ 8001522:	4a0d      	ldr	r2, [pc, #52]	; (8001558 <outputsInit+0xa4>)
+ 8001524:	f443 7380 	orr.w	r3, r3, #256	; 0x100
+ 8001528:	6013      	str	r3, [r2, #0]
 	GPIOE->OTYPER  &=~ (1<<pinRx);
- 8001622:	4b0b      	ldr	r3, [pc, #44]	; (8001650 <outputsInit+0xa4>)
- 8001624:	685b      	ldr	r3, [r3, #4]
- 8001626:	4a0a      	ldr	r2, [pc, #40]	; (8001650 <outputsInit+0xa4>)
- 8001628:	f023 0310 	bic.w	r3, r3, #16
- 800162c:	6053      	str	r3, [r2, #4]
+ 800152a:	4b0b      	ldr	r3, [pc, #44]	; (8001558 <outputsInit+0xa4>)
+ 800152c:	685b      	ldr	r3, [r3, #4]
+ 800152e:	4a0a      	ldr	r2, [pc, #40]	; (8001558 <outputsInit+0xa4>)
+ 8001530:	f023 0310 	bic.w	r3, r3, #16
+ 8001534:	6053      	str	r3, [r2, #4]
 	GPIOE->OSPEEDR &=~ (3<<pinRx*3);
- 800162e:	4b08      	ldr	r3, [pc, #32]	; (8001650 <outputsInit+0xa4>)
- 8001630:	689b      	ldr	r3, [r3, #8]
- 8001632:	4a07      	ldr	r2, [pc, #28]	; (8001650 <outputsInit+0xa4>)
- 8001634:	f423 5340 	bic.w	r3, r3, #12288	; 0x3000
- 8001638:	6093      	str	r3, [r2, #8]
+ 8001536:	4b08      	ldr	r3, [pc, #32]	; (8001558 <outputsInit+0xa4>)
+ 8001538:	689b      	ldr	r3, [r3, #8]
+ 800153a:	4a07      	ldr	r2, [pc, #28]	; (8001558 <outputsInit+0xa4>)
+ 800153c:	f423 5340 	bic.w	r3, r3, #12288	; 0x3000
+ 8001540:	6093      	str	r3, [r2, #8]
 	GPIOE->PUPDR   &=~ (3<<pinRx*3);
- 800163a:	4b05      	ldr	r3, [pc, #20]	; (8001650 <outputsInit+0xa4>)
- 800163c:	68db      	ldr	r3, [r3, #12]
- 800163e:	4a04      	ldr	r2, [pc, #16]	; (8001650 <outputsInit+0xa4>)
- 8001640:	f423 5340 	bic.w	r3, r3, #12288	; 0x3000
- 8001644:	60d3      	str	r3, [r2, #12]
+ 8001542:	4b05      	ldr	r3, [pc, #20]	; (8001558 <outputsInit+0xa4>)
+ 8001544:	68db      	ldr	r3, [r3, #12]
+ 8001546:	4a04      	ldr	r2, [pc, #16]	; (8001558 <outputsInit+0xa4>)
+ 8001548:	f423 5340 	bic.w	r3, r3, #12288	; 0x3000
+ 800154c:	60d3      	str	r3, [r2, #12]
 }
+ 800154e:	bf00      	nop
+ 8001550:	bd80      	pop	{r7, pc}
+ 8001552:	bf00      	nop
+ 8001554:	40023800 	.word	0x40023800
+ 8001558:	40021000 	.word	0x40021000
+
+0800155c <decreaseTime>:
+
+//Función: disminuye tiempo de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void decreaseTime()
+{
+ 800155c:	b580      	push	{r7, lr}
+ 800155e:	af00      	add	r7, sp, #0
+	BSP_LED_On(LED1);
+ 8001560:	2000      	movs	r0, #0
+ 8001562:	f000 f923 	bl	80017ac <BSP_LED_On>
+	if(tiempoDisparo>100) tiempoDisparo = tiempoDisparo-100;
+ 8001566:	4b0f      	ldr	r3, [pc, #60]	; (80015a4 <decreaseTime+0x48>)
+ 8001568:	881b      	ldrh	r3, [r3, #0]
+ 800156a:	2b64      	cmp	r3, #100	; 0x64
+ 800156c:	d905      	bls.n	800157a <decreaseTime+0x1e>
+ 800156e:	4b0d      	ldr	r3, [pc, #52]	; (80015a4 <decreaseTime+0x48>)
+ 8001570:	881b      	ldrh	r3, [r3, #0]
+ 8001572:	3b64      	subs	r3, #100	; 0x64
+ 8001574:	b29a      	uxth	r2, r3
+ 8001576:	4b0b      	ldr	r3, [pc, #44]	; (80015a4 <decreaseTime+0x48>)
+ 8001578:	801a      	strh	r2, [r3, #0]
+	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
+ 800157a:	4b0a      	ldr	r3, [pc, #40]	; (80015a4 <decreaseTime+0x48>)
+ 800157c:	881b      	ldrh	r3, [r3, #0]
+ 800157e:	4619      	mov	r1, r3
+ 8001580:	4809      	ldr	r0, [pc, #36]	; (80015a8 <decreaseTime+0x4c>)
+ 8001582:	f003 fc8d 	bl	8004ea0 <iprintf>
+	while(menosTiempo_PRESSED);
+ 8001586:	bf00      	nop
+ 8001588:	4b08      	ldr	r3, [pc, #32]	; (80015ac <decreaseTime+0x50>)
+ 800158a:	691b      	ldr	r3, [r3, #16]
+ 800158c:	f003 0302 	and.w	r3, r3, #2
+ 8001590:	2b00      	cmp	r3, #0
+ 8001592:	d1f9      	bne.n	8001588 <decreaseTime+0x2c>
+	BSP_LED_Off(LED1);
+ 8001594:	2000      	movs	r0, #0
+ 8001596:	f000 f923 	bl	80017e0 <BSP_LED_Off>
+	HAL_Delay(100);
+ 800159a:	2064      	movs	r0, #100	; 0x64
+ 800159c:	f000 fb48 	bl	8001c30 <HAL_Delay>
+}
+ 80015a0:	bf00      	nop
+ 80015a2:	bd80      	pop	{r7, pc}
+ 80015a4:	20000000 	.word	0x20000000
+ 80015a8:	080071c4 	.word	0x080071c4
+ 80015ac:	40021800 	.word	0x40021800
+
+080015b0 <increaseTime>:
+
+//Función: aumenta tiempo de Disparo de RX
+//Entrada: ninguna
+//Salida: ninguna
+void increaseTime()
+{
+ 80015b0:	b580      	push	{r7, lr}
+ 80015b2:	af00      	add	r7, sp, #0
+	BSP_LED_On(LED2);
+ 80015b4:	2001      	movs	r0, #1
+ 80015b6:	f000 f8f9 	bl	80017ac <BSP_LED_On>
+	if(tiempoDisparo<3000) tiempoDisparo = tiempoDisparo+100;
+ 80015ba:	4b10      	ldr	r3, [pc, #64]	; (80015fc <increaseTime+0x4c>)
+ 80015bc:	881b      	ldrh	r3, [r3, #0]
+ 80015be:	f640 32b7 	movw	r2, #2999	; 0xbb7
+ 80015c2:	4293      	cmp	r3, r2
+ 80015c4:	d805      	bhi.n	80015d2 <increaseTime+0x22>
+ 80015c6:	4b0d      	ldr	r3, [pc, #52]	; (80015fc <increaseTime+0x4c>)
+ 80015c8:	881b      	ldrh	r3, [r3, #0]
+ 80015ca:	3364      	adds	r3, #100	; 0x64
+ 80015cc:	b29a      	uxth	r2, r3
+ 80015ce:	4b0b      	ldr	r3, [pc, #44]	; (80015fc <increaseTime+0x4c>)
+ 80015d0:	801a      	strh	r2, [r3, #0]
+	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
+ 80015d2:	4b0a      	ldr	r3, [pc, #40]	; (80015fc <increaseTime+0x4c>)
+ 80015d4:	881b      	ldrh	r3, [r3, #0]
+ 80015d6:	4619      	mov	r1, r3
+ 80015d8:	4809      	ldr	r0, [pc, #36]	; (8001600 <increaseTime+0x50>)
+ 80015da:	f003 fc61 	bl	8004ea0 <iprintf>
+	while(masTiempo_PRESSED);
+ 80015de:	bf00      	nop
+ 80015e0:	4b08      	ldr	r3, [pc, #32]	; (8001604 <increaseTime+0x54>)
+ 80015e2:	691b      	ldr	r3, [r3, #16]
+ 80015e4:	f003 0301 	and.w	r3, r3, #1
+ 80015e8:	2b00      	cmp	r3, #0
+ 80015ea:	d1f9      	bne.n	80015e0 <increaseTime+0x30>
+	BSP_LED_Off(LED2);
+ 80015ec:	2001      	movs	r0, #1
+ 80015ee:	f000 f8f7 	bl	80017e0 <BSP_LED_Off>
+	HAL_Delay(100);
+ 80015f2:	2064      	movs	r0, #100	; 0x64
+ 80015f4:	f000 fb1c 	bl	8001c30 <HAL_Delay>
+}
+ 80015f8:	bf00      	nop
+ 80015fa:	bd80      	pop	{r7, pc}
+ 80015fc:	20000000 	.word	0x20000000
+ 8001600:	080071c4 	.word	0x080071c4
+ 8001604:	40021800 	.word	0x40021800
+
+08001608 <applyRx>:
+
+//Función: ejecución de Disparo de RX, durante el tiempo configurado
+//Entrada: ninguna
+//Salida: ninguna
+void applyRx()
+{
+ 8001608:	b580      	push	{r7, lr}
+ 800160a:	af00      	add	r7, sp, #0
+	printf("Disparo ON\r\n");
+ 800160c:	480e      	ldr	r0, [pc, #56]	; (8001648 <applyRx+0x40>)
+ 800160e:	f003 fccd 	bl	8004fac <puts>
+	BSP_LED_On(LED3);
+ 8001612:	2002      	movs	r0, #2
+ 8001614:	f000 f8ca 	bl	80017ac <BSP_LED_On>
+	HAL_Delay(tiempoDisparo);
+ 8001618:	4b0c      	ldr	r3, [pc, #48]	; (800164c <applyRx+0x44>)
+ 800161a:	881b      	ldrh	r3, [r3, #0]
+ 800161c:	4618      	mov	r0, r3
+ 800161e:	f000 fb07 	bl	8001c30 <HAL_Delay>
+	BSP_LED_Off(LED3);
+ 8001622:	2002      	movs	r0, #2
+ 8001624:	f000 f8dc 	bl	80017e0 <BSP_LED_Off>
+	printf("Disparo OFF\r\n");
+ 8001628:	4809      	ldr	r0, [pc, #36]	; (8001650 <applyRx+0x48>)
+ 800162a:	f003 fcbf 	bl	8004fac <puts>
+	while(BSP_PB_GetState(BUTTON_USER)); //espera a que suelte disparo
+ 800162e:	bf00      	nop
+ 8001630:	2000      	movs	r0, #0
+ 8001632:	f000 f945 	bl	80018c0 <BSP_PB_GetState>
+ 8001636:	4603      	mov	r3, r0
+ 8001638:	2b00      	cmp	r3, #0
+ 800163a:	d1f9      	bne.n	8001630 <applyRx+0x28>
+	HAL_Delay(200);
+ 800163c:	20c8      	movs	r0, #200	; 0xc8
+ 800163e:	f000 faf7 	bl	8001c30 <HAL_Delay>
+}
+ 8001642:	bf00      	nop
+ 8001644:	bd80      	pop	{r7, pc}
  8001646:	bf00      	nop
- 8001648:	bd80      	pop	{r7, pc}
- 800164a:	bf00      	nop
- 800164c:	40023800 	.word	0x40023800
- 8001650:	40021000 	.word	0x40021000
+ 8001648:	080071e0 	.word	0x080071e0
+ 800164c:	20000000 	.word	0x20000000
+ 8001650:	080071ec 	.word	0x080071ec
 
 08001654 <myUART_init>:
  	 Entradas: ninguna
@@ -10117,11 +10117,11 @@ int main(void)
 
 	/* Initialize Inputs */
 	inputsInit();
- 800436a:	f7fd f8e9 	bl	8001540 <inputsInit>
+ 800436a:	f7fd f86d 	bl	8001448 <inputsInit>
 
 	/* Initialize Outputs */
 	outputsInit();
- 800436e:	f7fd f91d 	bl	80015ac <outputsInit>
+ 800436e:	f7fd f8a1 	bl	80014b4 <outputsInit>
 
 	/* Initialize FSM */
 	debounceFSM_init();
@@ -10226,7 +10226,7 @@ int main(void)
 			case s_decreaseTime:
 
 					decreaseTime();
- 80043fe:	f7fc ffdb 	bl	80013b8 <decreaseTime>
+ 80043fe:	f7fd f8ad 	bl	800155c <decreaseTime>
 					mainState = s_rest;
  8004402:	2300      	movs	r3, #0
  8004404:	71fb      	strb	r3, [r7, #7]
@@ -10236,7 +10236,7 @@ int main(void)
 			case s_increaseTime:
 
 					increaseTime();
- 8004408:	f7fd f800 	bl	800140c <increaseTime>
+ 8004408:	f7fd f8d2 	bl	80015b0 <increaseTime>
 					mainState = s_rest;
  800440c:	2300      	movs	r3, #0
  800440e:	71fb      	strb	r3, [r7, #7]
@@ -10263,7 +10263,7 @@ int main(void)
 			case s_Rx:
 
 					applyRx();
- 800442c:	f7fd f81a 	bl	8001464 <applyRx>
+ 800442c:	f7fd f8ec 	bl	8001608 <applyRx>
 					mainState = s_rest;
  8004430:	2300      	movs	r3, #0
  8004432:	71fb      	strb	r3, [r7, #7]

@@ -28,7 +28,6 @@ static debounceState_t actualB1State;
 static debounceState_t actualB2State;
 static debounceState_t actualB3State;
 
-static uint16_t tiempoDisparo = 100;
 static uint8_t changeState = 0;
 
 /*	Función: lee las entradas, resuelve la lógica de transición de datos, actualiza las salidas
@@ -221,45 +220,5 @@ void debounceFSM_init()
 	actualB1State = BUTTON_UP;
 	actualB2State = BUTTON_UP;
 	actualB3State = BUTTON_UP;
-}
-
-//Función: disminuye tiempo de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void decreaseTime()
-{
-	BSP_LED_On(LED1);
-	if(tiempoDisparo>100) tiempoDisparo = tiempoDisparo-100;
-	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
-	while(BUTTON_menosTiempo_PRESSED);
-	BSP_LED_Off(LED1);
-	HAL_Delay(100);
-}
-
-//Función: aumenta tiempo de Disparo de RX
-//Entrada: ninguna
-//Salida: ninguna
-void increaseTime()
-{
-	BSP_LED_On(LED2);
-	if(tiempoDisparo<3000) tiempoDisparo = tiempoDisparo+100;
-	printf("Tiempo de disparo = %dms\r\n",tiempoDisparo);
-	while(BUTTON_masTiempo_PRESSED);
-	BSP_LED_Off(LED2);
-	HAL_Delay(100);
-}
-
-//Función: ejecución de Disparo de RX, durante el tiempo configurado
-//Entrada: ninguna
-//Salida: ninguna
-void applyRx()
-{
-	printf("Disparo ON\r\n");
-	BSP_LED_On(LED3);
-	HAL_Delay(tiempoDisparo);
-	BSP_LED_Off(LED3);
-	printf("Disparo OFF\r\n");
-	while(BSP_PB_GetState(BUTTON_USER)); //espera a que suelte disparo
-	HAL_Delay(200);
 }
 
