@@ -79,7 +79,7 @@ int main(void)
 	while (1)
 	{
 		mainFSM_update();
-		HAL_Delay(10);
+		HAL_Delay(100);
 	}
 }
 
