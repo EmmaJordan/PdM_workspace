@@ -65,8 +65,8 @@ all: main-build
 main-build: TP_PdM_Emma.elf secondary-outputs
 
 # Tool invocations
-TP_PdM_Emma.elf TP_PdM_Emma.map: $(OBJS) $(USER_OBJS) C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "TP_PdM_Emma.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP_PdM_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+TP_PdM_Emma.elf TP_PdM_Emma.map: $(OBJS) $(USER_OBJS) C:\Users\Win10\Desktop\Repositorios\ CESE\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TP_PdM_Emma.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Win10\Desktop\Repositorios CESE\RepoPdM_Jordan\PdM_workspace\TP_PdM_Emma\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TP_PdM_Emma.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

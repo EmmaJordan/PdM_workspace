@@ -1,16 +1,3 @@
-#eclipse
-.metadata
-
-#stm32cubeide
-.metadata
-.makefile
-*.list
-*.mk
-*.xml
-.list
-.mk
-.xml
-
 # Prerequisites
 *.d
 
